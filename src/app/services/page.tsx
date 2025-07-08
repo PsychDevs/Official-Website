@@ -1,117 +1,151 @@
-import { Layout, Code, Zap, Smartphone, ShoppingCart, Cpu } from 'lucide-react'
-import Link from 'next/link'
-import { Button } from '@/components/ui/Button'
+import { Check, Layout, Code, Zap, Cpu } from 'lucide-react'
+import { Button } from '@/components/ui/button'
 
 const services = [
   {
-    title: 'Web Development',
-    description: 'Modern, responsive websites tailored to your brand and audience.',
+    title: 'AI-Powered Web Design',
+    description: 'Modern, responsive websites designed with the help of AI for optimal user experience and conversion.',
     icon: Layout,
+    image: '/services/webdesign.jpg',
     features: ['Custom UI/UX', 'SEO Optimization', 'Performance Tuning'],
   },
   {
-    title: 'Custom Software',
-    description: 'Powerful, scalable software solutions built for your business needs.',
+    title: 'Software Solutions',
+    description: 'Custom SaaS, automation tools, and integrations tailored to your business needs.',
     icon: Code,
-    features: ['API Development', 'Cloud Integration', 'Automation'],
+    image: '/services/software.jpg',
+    features: ['API Development', 'Cloud Integration', 'DevOps Setup'],
   },
   {
     title: 'Branding & Identity',
     description: 'Logo design, style guides, and marketing materials to elevate your brand.',
     icon: Zap,
+    image: '/services/branding.jpg',
     features: ['Brand Strategy', 'Logo & Visuals', 'Marketing Assets'],
   },
   {
-    title: 'E-commerce Development',
-    description: 'Robust online stores with seamless shopping experiences.',
-    icon: ShoppingCart,
-    features: ['Product Catalog', 'Payment Integration', 'Order Management'],
-  },
-  {
-    title: 'Mobile App Development',
-    description: 'Cross-platform mobile apps for iOS and Android.',
-    icon: Smartphone,
-    features: ['iOS & Android', 'Push Notifications', 'App Store Launch'],
-  },
-  {
     title: 'AI Integrations',
-    description: 'Enhance your products with smart automation and analytics.',
+    description: 'Chatbots, automation, and data analysis powered by the latest AI technologies.',
     icon: Cpu,
-    features: ['Chatbots', 'Process Automation', 'Data Insights'],
+    image: '/services/ai.jpg',
+    features: ['AI Chatbots', 'Process Automation', 'Data Insights'],
+  },
+]
+
+const tiers = [
+  {
+    name: 'Starter',
+    id: 'tier-starter',
+    price: { monthly: '$1,999' },
+    description: 'Perfect for small businesses and startups',
+    features: [
+      '5 Pages Website',
+      'Basic SEO Setup',
+      'Contact Form',
+      'Social Media Integration',
+      '1 Month Support',
+    ],
+    featured: false,
+  },
+  {
+    name: 'Pro',
+    id: 'tier-pro',
+    price: { monthly: '$4,999' },
+    description: 'Ideal for growing businesses',
+    features: [
+      '10 Pages Website',
+      'Advanced SEO',
+      'Custom Features',
+      'E-commerce Integration',
+      '3 Months Support',
+      'Performance Optimization',
+      'Analytics Setup',
+    ],
+    featured: true,
+  },
+  {
+    name: 'Custom',
+    id: 'tier-custom',
+    price: { monthly: 'Custom' },
+    description: 'Tailored solutions for enterprise needs',
+    features: [
+      'Unlimited Pages',
+      'Custom Development',
+      'AI Integration',
+      'Enterprise Features',
+      'Priority Support',
+      'Dedicated Team',
+      'SLA Agreement',
+    ],
+    featured: false,
   },
 ]
 
 export default function ServicesPage() {
   return (
-    <div className="min-h-screen">
-      {/* Hero Section */}
-      <section className="py-20 sm:py-32">
-        <div className="container pt-20">
-          <div className="mx-auto max-w-3xl text-center">
-            <h1 className="font-display text-4xl font-bold tracking-tight text-foreground sm:text-6xl mb-6">
-              Our Services
-            </h1>
-            <p className="text-xl leading-8 text-muted-foreground mb-8">
-              We help businesses grow with beautiful web design, robust software, and digital solutions tailored to your needs.
-            </p>
-            <Button asChild size="lg">
-              <Link href="/contact" className="flex flex-row items-center justify-center">
-                Get a Free Consultation
-              </Link>
-            </Button>
-          </div>
-        </div>
-      </section>
-
-      {/* Services Cards Section */}
-      <section className="py-16 sm:py-24 px-4">
-        <div className="container">
-          <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
-            {services.map((service) => (
-              <div key={service.title} className="bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 rounded-2xl shadow-lg p-8 flex flex-col items-center text-center">
-                <service.icon className="h-10 w-10 text-primary mb-4" />
-                <h2 className="text-xl font-semibold text-white mb-2">{service.title}</h2>
-                <p className="text-gray-300 mb-4">{service.description}</p>
-                <ul className="text-sm text-gray-400 mb-2 space-y-1">
+    <div className="min-h-screen bg-background text-gray-900 dark:text-white flex items-center justify-center px-4">
+      <div className="w-full max-w-3xl mx-auto">
+        <h1 className="text-4xl font-bold mb-6 text-center">Our Services</h1>
+        <div className="mb-10 grid gap-8 md:grid-cols-2">
+          {services.map((service) => (
+            <div key={service.title} className="bg-white dark:bg-gray-900 rounded-2xl shadow-lg p-0 flex flex-col group overflow-hidden hover:shadow-xl transition-shadow duration-300">
+              <div className="relative h-32 w-full overflow-hidden flex items-center justify-center bg-gradient-to-br from-primary/10 to-primary/5">
+                <img src={service.image} alt={service.title} className="object-cover w-24 h-24 rounded-xl shadow-lg border-4 border-white dark:border-gray-900 -mt-8" />
+                <service.icon className="absolute top-4 right-4 h-8 w-8 text-primary/70" />
+              </div>
+              <div className="p-6 flex flex-col flex-1">
+                <h2 className="text-2xl font-semibold mb-2 group-hover:text-primary transition-colors">{service.title}</h2>
+                <p className="text-gray-600 dark:text-gray-300 mb-2">{service.description}</p>
+                <ul className="list-disc list-inside text-gray-500 dark:text-gray-400 text-sm mb-4">
                   {service.features.map((feature) => (
-                    <li key={feature} className="flex items-center justify-center gap-2">
-                      <span className="inline-block w-2 h-2 rounded-full bg-primary" />
-                      {feature}
-                    </li>
+                    <li key={feature}>{feature}</li>
                   ))}
                 </ul>
               </div>
-            ))}
-          </div>
+            </div>
+          ))}
         </div>
-      </section>
-
-      {/* CTA Section */}
-      <section className="py-20 sm:py-32">
-        <div className="container">
-          <div className="relative isolate overflow-hidden rounded-3xl bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 px-6 py-24 text-center shadow-2xl border border-gray-700 sm:px-16">
-            <h2 className="mx-auto max-w-2xl font-display text-3xl font-bold tracking-tight text-white sm:text-4xl">
-              Ready to start your project?
-            </h2>
-            <p className="mx-auto mt-6 max-w-xl text-lg leading-8 text-gray-200">
-              Let's talk about your goals and how we can help you achieve them.
-            </p>
-            <div className="mt-10 flex items-center justify-center gap-x-6">
-              <Button
-                variant="secondary"
-                size="lg"
-                className="bg-primary text-black hover:bg-primary/90"
-                asChild
-              >
-                <Link href="/contact">Get Started</Link>
-              </Button>
-              <Button variant="ghost" size="lg" className="text-white hover:bg-gray-700" asChild>
-                <Link href="/portfolio">View Our Work</Link>
-              </Button>
+        <div className="mt-12">
+          <h2 className="text-2xl font-bold mb-4 text-center">Pricing Tiers</h2>
+          <div className="grid gap-6 md:grid-cols-3">
+            <div className="bg-white dark:bg-gray-900 rounded-lg shadow p-6 text-center">
+              <h3 className="text-xl font-semibold mb-2">Starter</h3>
+              <p className="text-3xl font-bold mb-2">$1,999</p>
+              <p className="mb-4 text-gray-500 dark:text-gray-400">For small businesses and startups</p>
+              <ul className="list-disc list-inside text-gray-500 dark:text-gray-400 text-sm mb-4">
+                <li>5 Pages Website</li>
+                <li>Basic SEO</li>
+                <li>1 Month Support</li>
+              </ul>
+              <a href="/contact" className="inline-block rounded bg-primary px-4 py-2 text-white font-semibold hover:bg-primary/90 transition">Get Started</a>
+            </div>
+            <div className="bg-primary text-white rounded-lg shadow p-6 text-center border-2 border-primary">
+              <h3 className="text-xl font-semibold mb-2">Pro</h3>
+              <p className="text-3xl font-bold mb-2">$4,999</p>
+              <p className="mb-4">For growing businesses</p>
+              <ul className="list-disc list-inside text-white/80 text-sm mb-4">
+                <li>10 Pages Website</li>
+                <li>Advanced SEO</li>
+                <li>3 Months Support</li>
+                <li>Performance Optimization</li>
+              </ul>
+              <a href="/contact" className="inline-block rounded bg-white text-primary px-4 py-2 font-semibold hover:bg-gray-100 transition">Get Started</a>
+            </div>
+            <div className="bg-white dark:bg-gray-900 rounded-lg shadow p-6 text-center">
+              <h3 className="text-xl font-semibold mb-2">Custom</h3>
+              <p className="text-3xl font-bold mb-2">Custom</p>
+              <p className="mb-4 text-gray-500 dark:text-gray-400">Tailored solutions for enterprise</p>
+              <ul className="list-disc list-inside text-gray-500 dark:text-gray-400 text-sm mb-4">
+                <li>Unlimited Pages</li>
+                <li>Custom Development</li>
+                <li>AI Integration</li>
+                <li>Priority Support</li>
+              </ul>
+              <a href="/contact" className="inline-block rounded bg-primary px-4 py-2 text-white font-semibold hover:bg-primary/90 transition">Contact Us</a>
             </div>
           </div>
         </div>
-      </section>
+      </div>
     </div>
   )
 } 

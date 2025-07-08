@@ -1,5 +1,5 @@
 import Link from "next/link"
-import { Instagram, Facebook, Linkedin, Twitter } from "lucide-react"
+import { Github, Twitter, Linkedin } from "lucide-react"
 
 const navigation = {
   main: [
@@ -10,41 +10,36 @@ const navigation = {
   ],
   social: [
     {
-      name: "Instagram",
+      name: "Twitter",
       href: "#",
-      icon: Instagram,
+      icon: Twitter,
     },
     {
-      name: "Facebook",
+      name: "GitHub",
       href: "#",
-      icon: Facebook,
+      icon: Github,
     },
     {
       name: "LinkedIn",
       href: "#",
       icon: Linkedin,
     },
-    {
-      name: "X",
-      href: "#",
-      icon: Twitter,
-    },
   ],
 }
 
 export function Footer() {
   return (
-    <footer className="border-t bg-background/90">
+    <footer className="border-t bg-background">
       <div className="container py-12 md:py-16">
-        <div className="flex flex-col md:flex-row md:justify-between md:items-center gap-8 text-center md:text-left">
-          <div className="space-y-4 text-center md:text-left">
-            <Link href="/" className="flex items-center justify-center md:justify-start space-x-2">
-              <span className="font-display text-xl font-bold">PsychDevs</span>
+        <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-2 items-center">
+          <div className="space-y-4">
+            <Link href="/" className="flex items-center space-x-2">
+              <span className="font-display text-xl font-bold">AI Agency</span>
             </Link>
-            <p className="text-sm text-muted-foreground max-w-3xl">
-              We are a digital agency specializing in modern web development and custom software solutions for businesses of all sizes. We are a team of passionate developers and designers to provide the best possible service to our clients. 
+            <p className="text-sm text-muted-foreground">
+              We are a lean startup agency specializing in AI-powered web design and software solutions.
             </p>
-            <div className="flex justify-center md:justify-start space-x-4 mt-4">
+            <div className="flex space-x-4 mt-4">
               {navigation.social.map((item) => (
                 <Link
                   key={item.name}
@@ -57,16 +52,16 @@ export function Footer() {
               ))}
             </div>
           </div>
-          <div className="space-y-4 md:text-right">
+          <div className="space-y-4">
             <h3 className="text-sm font-semibold mb-2">Contact Us</h3>
-            <p className="text-sm text-muted-foreground">Email: <a href="mailto:psychdevs@gmail.com" className="text-primary underline">psychdevs@gmail.com</a></p>
-            <p className="text-sm text-muted-foreground">Phone: <a href="tel:+94750212605" className="text-primary underline">+94 75 021 2605</a></p>
-            {/* <p className="text-sm text-muted-foreground">Location: 123 AI Street, Tech City, World</p> */}
+            <p className="text-sm text-muted-foreground">Email: <a href="mailto:hello@aiagency.com" className="text-primary underline">hello@aiagency.com</a></p>
+            <p className="text-sm text-muted-foreground">Phone: <a href="tel:+1234567890" className="text-primary underline">+1 (234) 567-890</a></p>
+            <p className="text-sm text-muted-foreground">Location: 123 AI Street, Tech City, World</p>
           </div>
         </div>
         <div className="mt-12 border-t pt-8">
           <p className="text-center text-sm text-muted-foreground">
-            © {new Date().getFullYear()} PsychDevs. All rights reserved.
+            © {new Date().getFullYear()} AI Agency. All rights reserved.
           </p>
         </div>
       </div>

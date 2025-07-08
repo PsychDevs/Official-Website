@@ -1,12 +1,10 @@
-import { Code, Sparkles, Rocket, Heart, Users, Award, Clock, Target } from 'lucide-react'
-import Link from 'next/link'
-import { Button } from "@/components/ui/Button"
+import { Code, Sparkles, Rocket, Heart } from 'lucide-react'
 
 const stats = [
-  { id: 1, name: 'Projects Completed', value: '50+', icon: Award },
-  { id: 2, name: 'Happy Clients', value: '30+', icon: Users },
-  { id: 3, name: 'Years Experience', value: '3+', icon: Clock },
-  { id: 4, name: 'Success Rate', value: '98%', icon: Target },
+  { id: 1, name: 'Projects Completed', value: '50+' },
+  { id: 2, name: 'Happy Clients', value: '30+' },
+  { id: 3, name: 'Years Experience', value: '3+' },
+  { id: 4, name: 'AI Tools Used', value: '10+' },
 ]
 
 const values = [
@@ -22,90 +20,50 @@ const values = [
   },
   {
     name: 'Efficiency',
-    description: 'We streamline processes and deliver results faster without compromising quality.',
+    description: 'We leverage AI to streamline processes and deliver results faster without compromising quality.',
     icon: Rocket,
   },
   {
-    name: 'Partnership',
-    description: 'We build long-term relationships with our clients, treating every project as a collaboration.',
+    name: 'Sustainability',
+    description: 'We build solutions that are environmentally conscious and socially responsible.',
     icon: Heart,
-  },
-]
-
-const team = [
-  {
-    name: 'Alex Kim',
-    role: 'Founder & Lead Developer',
-    image: '/team/alex.jpg',
-    bio: 'Visionary leader with a passion for creating beautiful, functional code and exceptional user experiences.',
-  },
-  {
-    name: 'Jordan Lee',
-    role: 'Senior Software Engineer',
-    image: '/team/jordan.jpg',
-    bio: 'Expert in modern web technologies and scalable software architecture.',
-  },
-  {
-    name: 'Morgan Smith',
-    role: 'UI/UX Designer',
-    image: '/team/morgan.jpg',
-    bio: 'Creates intuitive, delightful experiences that users love and businesses trust.',
   },
 ]
 
 export default function AboutPage() {
   return (
-    <div className="min-h-screen">
-      {/* Hero Section */}
-      <section className="py-20 sm:py-40">
-        <div className="container">
-          <div className="mx-auto max-w-4xl text-center">
-            <h1 className="font-display text-4xl font-bold tracking-tight text-foreground sm:text-6xl mb-12">
-              About PsychDevs
-            </h1>
-            <p className="text-xl leading-8 text-muted-foreground mb-8">
-              We're a passionate team of developers, designers, and digital strategists dedicated to transforming ideas into powerful digital solutions.
-            </p>
-            <p className="text-xl leading-8 text-muted-foreground mb-8">
-              Founded with a vision to make exceptional web development accessible to businesses of all sizes, we combine technical expertise with creative innovation to deliver results that exceed expectations.
-            </p>
+    <div className="min-h-screen bg-background text-gray-900 dark:text-white flex items-center justify-center px-4">
+      <div className="w-full max-w-2xl mx-auto text-center">
+        <h1 className="text-4xl font-bold mb-6">About AI Agency</h1>
+        <p className="mb-6 text-lg text-gray-600 dark:text-gray-300">
+          We are a lean startup agency specializing in AI-powered web design and software solutions. Our mission is to empower businesses worldwide with beautiful, performant, and intelligent digital products.
+        </p>
+        <h2 className="text-2xl font-semibold mb-2 mt-8">Our Vision</h2>
+        <p className="mb-6 text-gray-600 dark:text-gray-300">
+          To be the global leader in AI-driven digital transformation, making advanced technology accessible and impactful for every business.
+        </p>
+        <h2 className="text-2xl font-semibold mb-2 mt-8">Meet the Team</h2>
+        <div className="flex flex-wrap justify-center gap-8 mt-8">
+          <div className="flex flex-col items-center bg-white dark:bg-gray-900 rounded-xl shadow p-6 w-64">
+            <img src="/team/alex.jpg" alt="Alex Kim" className="w-20 h-20 rounded-full object-cover mb-3 border-4 border-primary/30" />
+            <span className="block font-semibold text-lg">Alex Kim</span>
+            <span className="block text-sm text-gray-500 dark:text-gray-400 mb-2">Founder & Lead Developer</span>
+            <p className="text-sm text-muted-foreground text-center">Visionary leader with a passion for AI and beautiful code.</p>
+          </div>
+          <div className="flex flex-col items-center bg-white dark:bg-gray-900 rounded-xl shadow p-6 w-64">
+            <img src="/team/jordan.jpg" alt="Jordan Lee" className="w-20 h-20 rounded-full object-cover mb-3 border-4 border-primary/30" />
+            <span className="block font-semibold text-lg">Jordan Lee</span>
+            <span className="block text-sm text-gray-500 dark:text-gray-400 mb-2">AI Solutions Architect</span>
+            <p className="text-sm text-muted-foreground text-center">Expert in machine learning and automation for business growth.</p>
+          </div>
+          <div className="flex flex-col items-center bg-white dark:bg-gray-900 rounded-xl shadow p-6 w-64">
+            <img src="/team/morgan.jpg" alt="Morgan Smith" className="w-20 h-20 rounded-full object-cover mb-3 border-4 border-primary/30" />
+            <span className="block font-semibold text-lg">Morgan Smith</span>
+            <span className="block text-sm text-gray-500 dark:text-gray-400 mb-2">UI/UX Designer</span>
+            <p className="text-sm text-muted-foreground text-center">Designs intuitive, delightful experiences for every user.</p>
           </div>
         </div>
-      </section>
-
-      {/*
-        Our Story, Mission & Vision, and Our Values sections are commented out for now.
-        Uncomment and update when ready to showcase more about the company!
-      */}
-
-      {/* Future: Careers/Team Section can go here */}
-
-      {/* CTA Section */}
-      <section className="py-20 sm:py-32">
-        <div className="container">
-          <div className="relative isolate overflow-hidden rounded-3xl bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 px-6 py-24 text-center shadow-2xl border border-gray-700 sm:px-16">
-            <h2 className="mx-auto max-w-2xl font-display text-3xl font-bold tracking-tight text-white sm:text-4xl">
-              Ready to work with us?
-            </h2>
-            <p className="mx-auto mt-6 max-w-2xl text-lg leading-8 text-gray-200">
-              Let's discuss your project and see how we can help bring your vision to life.
-            </p>
-            <div className="mt-10 flex items-center justify-center gap-x-6">
-              <Button
-                variant="secondary"
-                size="lg"
-                className="bg-primary text-black hover:bg-primary/90"
-                asChild
-              >
-                <Link href="/contact">Get Started</Link>
-              </Button>
-              <Button variant="ghost" size="lg" className="text-white hover:bg-gray-700" asChild>
-                <Link href="/portfolio">View Our Work</Link>
-              </Button>
-            </div>
-          </div>
-        </div>
-      </section>
+      </div>
     </div>
   )
 } 
