@@ -2,8 +2,8 @@ import type { Metadata } from "next"
 import { Inter, Plus_Jakarta_Sans, Space_Grotesk } from "next/font/google"
 import "./globals.css"
 import { ThemeProvider } from "@/components/theme-provider"
-import { Navbar } from "@/components/navbar"
-import { Footer } from "@/components/footer"
+import { Navbar } from "@/components/Navbar"
+import { Footer } from "@/components/Footer"
 
 const inter = Inter({
   subsets: ["latin"],
@@ -24,8 +24,8 @@ const spaceGrotesk = Space_Grotesk({
 })
 
 export const metadata: Metadata = {
-  title: "AI Agency - Modern Web Design & Software Solutions",
-  description: "We are a lean startup agency specializing in AI-powered web design and software solutions.",
+  title: "PsychDevs",
+  description: "We are a digital agency specializing in modern web development and custom software solutions for businesses of all sizes.",
 }
 
 export default function RootLayout({
@@ -35,11 +35,11 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={`${inter.variable} ${plusJakartaSans.variable} ${spaceGrotesk.variable} font-sans antialiased`}>
+      <body className={`${inter.variable} ${plusJakartaSans.variable} ${spaceGrotesk.variable} font-sans antialiased bg-gradient-to-br from-gray-900 via-gray-800 to-black min-h-screen`}>
         <ThemeProvider
           attribute="class"
-          defaultTheme="system"
-          enableSystem
+          defaultTheme="dark"
+          enableSystem={false}
           disableTransitionOnChange
         >
           <div className="relative flex min-h-screen flex-col">

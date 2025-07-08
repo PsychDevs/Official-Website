@@ -1,13 +1,13 @@
 import { Metadata } from 'next'
 
 export const siteConfig = {
-  name: 'AI Agency',
-  description: 'We build beautiful, performant websites & software with the power of AI.',
-  url: 'https://aiagency.com',
-  ogImage: 'https://aiagency.com/og.jpg',
+  name: 'PsychDevs',
+  description: 'We build beautiful, performant websites & custom software for your business needs.',
+  url: 'https://psychdevs.com',
+  ogImage: 'https://psychdevs.com/og.jpg',
   links: {
-    twitter: 'https://twitter.com/aiagency',
-    github: 'https://github.com/aiagency',
+    twitter: 'https://twitter.com/psychdevs',
+    github: 'https://github.com/psychdevs',
   },
 }
 
@@ -39,7 +39,7 @@ export const defaultMetadata: Metadata = {
     title: siteConfig.name,
     description: siteConfig.description,
     images: [siteConfig.ogImage],
-    creator: '@aiagency',
+    creator: '@psychdevs',
   },
   icons: {
     icon: '/favicon.ico',
