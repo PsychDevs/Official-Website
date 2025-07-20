@@ -39,25 +39,19 @@ const team = [
         name: "Lasith Dissanayake",
         role: "Founder & Developer",
         image: "/team/lasith.jpg",
-        bio: "Codes by day, dreams of websites by night 💻",
-    },
-    {
-        name: "Senruk Karawita",
-        role: "Web Development Intern",
-        image: "/team/senruk.jpg",
-        bio: "Turning coffee into code, one bug at a time ☕",
+        bio: "Building digital dreams 💬",
     },
     {
         name: "Ashen Senarathne",
         role: "Developer",
         image: "/team/ashen.jpeg",
-        bio: "Debugging master & CSS wizard 🎨✨",
+        bio: "Targeting the perfection 🥷",
     },
     {
         name: "Vidumini Pathirage",
         role: "Talent Acquisition",
         image: "/team/vidumini.jpg",
-        bio: "Collecting awesome humans like Pokémon cards 🃏",
+        bio: "Collecting potential stars 🌟",
     },
 ];
 
@@ -170,7 +164,7 @@ export default function AboutPage() {
                     </div>
                     <ul
                         role="list"
-                        className="mx-auto grid max-w-6xl grid-cols-1 gap-x-8 gap-y-12 sm:grid-cols-2 lg:grid-cols-4 justify-items-center"
+                        className="mx-auto grid max-w-5xl grid-cols-1 gap-x-8 gap-y-12 sm:grid-cols-2 lg:grid-cols-3 justify-items-center"
                     >
                         {team.map((person) => (
                             <li key={person.name} className="text-center">

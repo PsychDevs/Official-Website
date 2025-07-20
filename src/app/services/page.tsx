@@ -215,97 +215,99 @@ export default function ServicesPage() {
                         {tiers.map((tier) => (
                             <div
                                 key={tier.id}
-                                className={`rounded-3xl p-8 ring-1 ${
+                                className={`rounded-3xl p-8 ring-1 flex flex-col ${
                                     tier.featured
                                         ? "bg-primary ring-primary"
                                         : "ring-gray-200"
                                 }`}
                             >
-                                <h3
-                                    className={`text-lg font-semibold leading-8 ${
-                                        tier.featured
-                                            ? "text-white"
-                                            : "text-foreground"
-                                    }`}
-                                >
-                                    {tier.name}
-                                </h3>
-                                <p
-                                    className={`mt-4 text-sm leading-6 ${
-                                        tier.featured
-                                            ? "text-primary-foreground/80"
-                                            : "text-muted-foreground"
-                                    }`}
-                                >
-                                    {tier.description}
-                                </p>
-                                <p className="mt-6 flex items-baseline gap-x-1">
-                                    <span
-                                        className={`text-4xl font-bold tracking-tight ${
+                                <div className="flex-grow">
+                                    <h3
+                                        className={`text-lg font-semibold leading-8 ${
                                             tier.featured
                                                 ? "text-white"
                                                 : "text-foreground"
                                         }`}
                                     >
-                                        {tier.price.monthly}
-                                    </span>
-                                    {tier.price.monthly !== "Custom" && (
+                                        {tier.name}
+                                    </h3>
+                                    <p
+                                        className={`mt-4 text-sm leading-6 ${
+                                            tier.featured
+                                                ? "text-primary-foreground/80"
+                                                : "text-muted-foreground"
+                                        }`}
+                                    >
+                                        {tier.description}
+                                    </p>
+                                    <p className="mt-6 flex items-baseline gap-x-1">
                                         <span
-                                            className={`text-sm font-semibold leading-6 ${
+                                            className={`text-4xl font-bold tracking-tight ${
                                                 tier.featured
-                                                    ? "text-primary-foreground/80"
-                                                    : "text-muted-foreground"
+                                                    ? "text-white"
+                                                    : "text-foreground"
                                             }`}
                                         >
-                                            /project
+                                            {tier.price.monthly}
                                         </span>
-                                    )}
-                                </p>
-                                {tier.price.monthly !== "Custom" && (
-                                    <div className="mt-2 flex items-center gap-2">
-                                        <span className="inline-flex items-center rounded-md bg-green-50 px-2 py-1 text-xs font-medium text-green-700 ring-1 ring-inset ring-green-600/20">
-                                            50% OFF
-                                        </span>
-                                        <span
-                                            className={`text-sm line-through ${
-                                                tier.featured
-                                                    ? "text-primary-foreground/60"
-                                                    : "text-muted-foreground"
-                                            }`}
-                                        >
-                                            {tier.name === "Basic"
-                                                ? "$298"
-                                                : tier.name === "Standard"
-                                                ? "$498"
-                                                : "$798"}
-                                        </span>
-                                    </div>
-                                )}
-                                <ul
-                                    role="list"
-                                    className={`mt-8 space-y-3 text-sm leading-6 ${
-                                        tier.featured
-                                            ? "text-primary-foreground/90"
-                                            : "text-muted-foreground"
-                                    }`}
-                                >
-                                    {tier.features.map((feature) => (
-                                        <li
-                                            key={feature}
-                                            className="flex gap-x-3"
-                                        >
-                                            <Check
-                                                className={`h-6 w-5 flex-none ${
+                                        {tier.price.monthly !== "Custom" && (
+                                            <span
+                                                className={`text-sm font-semibold leading-6 ${
                                                     tier.featured
-                                                        ? "text-white"
-                                                        : "text-primary"
+                                                        ? "text-primary-foreground/80"
+                                                        : "text-muted-foreground"
                                                 }`}
-                                                aria-hidden="true"
-                                            />
-                                            {feature}
-                                        </li>
-                                    ))}
-                                </ul>
+                                            >
+                                                /project
+                                            </span>
+                                        )}
+                                    </p>
+                                    {tier.price.monthly !== "Custom" && (
+                                        <div className="mt-2 flex items-center gap-2">
+                                            <span className="inline-flex items-center rounded-md bg-green-50 px-2 py-1 text-xs font-medium text-green-700 ring-1 ring-inset ring-green-600/20">
+                                                50% OFF
+                                            </span>
+                                            <span
+                                                className={`text-sm line-through ${
+                                                    tier.featured
+                                                        ? "text-primary-foreground/60"
+                                                        : "text-muted-foreground"
+                                                }`}
+                                            >
+                                                {tier.name === "Basic"
+                                                    ? "$298"
+                                                    : tier.name === "Standard"
+                                                    ? "$498"
+                                                    : "$798"}
+                                            </span>
+                                        </div>
+                                    )}
+                                    <ul
+                                        role="list"
+                                        className={`mt-8 space-y-3 text-sm leading-6 ${
+                                            tier.featured
+                                                ? "text-primary-foreground/90"
+                                                : "text-muted-foreground"
+                                        }`}
+                                    >
+                                        {tier.features.map((feature) => (
+                                            <li
+                                                key={feature}
+                                                className="flex gap-x-3"
+                                            >
+                                                <Check
+                                                    className={`h-6 w-5 flex-none ${
+                                                        tier.featured
+                                                            ? "text-white"
+                                                            : "text-primary"
+                                                    }`}
+                                                    aria-hidden="true"
+                                                />
+                                                {feature}
+                                            </li>
+                                        ))}
+                                    </ul>
+                                </div>
                                 <Button
                                     className={`mt-8 w-full ${
                                         tier.featured
