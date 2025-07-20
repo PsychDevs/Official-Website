@@ -23,9 +23,14 @@ const spaceGrotesk = Space_Grotesk({
 });
 
 export const metadata: Metadata = {
-    title: "PsychDevs - Affordable Web Design & Development",
+    title: "PsychDevs",
     description:
         "Get professional websites at budget-friendly prices. We create beautiful, functional websites that help your business grow without breaking the bank.",
+    icons: {
+        icon: "/PD.png",
+        shortcut: "/PD.png",
+        apple: "/PD.png",
+    },
 };
 
 export default function RootLayout({
