@@ -2,10 +2,11 @@
 
 import { useState } from "react";
 import { Mail, Phone, MapPin, Clock } from "lucide-react";
-import emailjs from "@emailjs/browser";
-import { emailjsConfig } from "@/lib/emailjs-config";
+import { useForm, ValidationError } from "@formspree/react";
 
 export default function ContactPage() {
+    const [state, handleFormspreeSubmit] = useForm("xblkogdg");
+
     const [formData, setFormData] = useState({
         firstName: "",
         lastName: "",
@@ -35,95 +36,54 @@ export default function ContactPage() {
         }));
     };
 
-    const handleSubmit = async (e: React.FormEvent) => {
-        e.preventDefault();
+    const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         setIsSubmitting(true);
         setSubmitStatus("idle");
 
         try {
-            // Debug: Log configuration values (remove in production)
-            console.log("EmailJS Config:", {
-                serviceId: emailjsConfig.serviceId,
-                templateId: emailjsConfig.templateId,
-                publicKey: emailjsConfig.publicKey.substring(0, 10) + "...",
-            });
-
-            // Prepare template parameters for EmailJS
-            const templateParams = {
-                name: `${formData.firstName} ${formData.lastName}`,
-                email: formData.email,
-                message: `Company: ${formData.company || "Not specified"}
-Phone: ${formData.phone || "Not provided"}
-Project Type: ${formData.projectType || "Not specified"}
-Budget: ${formData.budget || "Not specified"}
-
-Message:
-${formData.message}`,
-                to_email: "psychdevs@gmail.com",
-            };
-
-            console.log("Template Params:", templateParams);
-
-            // Send email using EmailJS
-            const result = await emailjs.send(
-                emailjsConfig.serviceId,
-                emailjsConfig.templateId,
-                templateParams,
-                emailjsConfig.publicKey
-            );
-
-            console.log("EmailJS Result:", result);
-
-            if (result.status === 200) {
-                setSubmitStatus("success");
-                // Reset form
-                setFormData({
-                    firstName: "",
-                    lastName: "",
-                    email: "",
-                    company: "",
-                    phone: "",
-                    projectType: "",
-                    budget: "",
-                    message: "",
-                });
-
-                // Reset button text after 7 seconds
-                setTimeout(() => {
-                    setSubmitStatus("idle");
-                }, 7000);
-            } else {
-                throw new Error(`EmailJS returned status: ${result.status}`);
-            }
+            // Call Formspree's handleSubmit function
+            await handleFormspreeSubmit(e);
         } catch (error: any) {
             setSubmitStatus("error");
-            console.error("EmailJS Error Details:", error);
-
-            // Provide more specific error messages
-            let errorMessage =
-                "Something went wrong. Please try again or contact us directly at psychdevs@gmail.com";
-
-            if (error.text) {
-                if (error.text.includes("Invalid public key")) {
-                    errorMessage =
-                        "Configuration error: Invalid public key. Please contact support.";
-                } else if (error.text.includes("Service not found")) {
-                    errorMessage =
-                        "Configuration error: Service not found. Please contact support.";
-                } else if (error.text.includes("Template not found")) {
-                    errorMessage =
-                        "Configuration error: Template not found. Please contact support.";
-                } else if (error.text.includes("Network")) {
-                    errorMessage =
-                        "Network error. Please check your connection and try again.";
-                }
-            }
-
-            setStatusMessage(errorMessage);
+            console.error("Form submission error:", error);
+            setStatusMessage(
+                "Something went wrong. Please try again or contact us directly at psychdevs@gmail.com"
+            );
         } finally {
             setIsSubmitting(false);
         }
     };
+
+    // Handle success state with useEffect-like behavior
+    if (state.succeeded && submitStatus !== "success") {
+        setSubmitStatus("success");
+        // Reset form
+        setFormData({
+            firstName: "",
+            lastName: "",
+            email: "",
+            company: "",
+            phone: "",
+            projectType: "",
+            budget: "",
+            message: "",
+        });
+
+        // Reset button text after 7 seconds
+        setTimeout(() => {
+            setSubmitStatus("idle");
+        }, 7000);
+    }
+
+    // Handle error state
+    if (
+        state.errors &&
+        Object.keys(state.errors).length > 0 &&
+        submitStatus !== "error"
+    ) {
+        setSubmitStatus("error");
+        setStatusMessage("Please check your form and try again.");
+    }
 
     return (
         <>
@@ -271,14 +231,24 @@ ${formData.message}`,
                                 Start Your Project
                             </h2>
 
-                            {/* Status Message - Only show errors */}
+                            {/* Status Messages */}
+                            {submitStatus === "success" && (
+                                <div className="p-4 rounded-md bg-green-50 text-green-800 border border-green-200 mb-6">
+                                    Thank you! Your message has been sent
+                                    successfully. We'll get back to you within
+                                    24 hours.
+                                </div>
+                            )}
+
                             {submitStatus === "error" && (
-                                <div className="p-4 rounded-md bg-red-50 text-red-800 border border-red-200">
+                                <div className="p-4 rounded-md bg-red-50 text-red-800 border border-red-200 mb-6">
                                     {statusMessage}
                                 </div>
                             )}
 
                             <form className="space-y-6" onSubmit={handleSubmit}>
+                                {/* TODO: Add Formspree action URL here when ready */}
+                                {/* Example: <form action="https://formspree.io/f/YOUR_FORM_ID" method="POST" className="space-y-6" onSubmit={handleSubmit}> */}
                                 <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
                                     <div>
                                         <label
@@ -296,6 +266,12 @@ ${formData.message}`,
                                             value={formData.firstName}
                                             onChange={handleInputChange}
                                             className="mt-2 block w-full rounded-md border border-input bg-background px-3 py-2 text-foreground shadow-sm focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary"
+                                        />
+                                        <ValidationError
+                                            prefix="First name"
+                                            field="firstName"
+                                            errors={state.errors}
+                                            className="mt-1 text-sm text-red-600"
                                         />
                                     </div>
                                     <div>
@@ -332,6 +308,12 @@ ${formData.message}`,
                                         value={formData.email}
                                         onChange={handleInputChange}
                                         className="mt-2 block w-full rounded-md border border-input bg-background px-3 py-2 text-foreground shadow-sm focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary"
+                                    />
+                                    <ValidationError
+                                        prefix="Email"
+                                        field="email"
+                                        errors={state.errors}
+                                        className="mt-1 text-sm text-red-600"
                                     />
                                 </div>
                                 <div>
