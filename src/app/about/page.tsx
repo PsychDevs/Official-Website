@@ -43,9 +43,15 @@ const team = [
     },
     {
         name: "Ashen Senarathne",
-        role: "Developer",
+        role: "Web Developer",
         image: "/team/ashen.jpeg",
         bio: "Targeting the perfection 🥷",
+    },
+    {
+        name: "Vihanga Tharuka",
+        role: "Web Developer",
+        image: "/team/vihanga.jpeg",
+        bio: "Crafting seamless experiences 🖥️",
     },
     {
         name: "Vidumini Pathirage",
@@ -68,19 +74,6 @@ const careers = [
             "Available for part-time commitment",
         ],
         icon: Sparkles,
-    },
-    {
-        title: "Web Development Intern",
-        type: "Part-time, Project-based",
-        description:
-            "Gain hands-on experience building modern websites with React, Next.js, and other cutting-edge technologies.",
-        requirements: [
-            "Basic knowledge of HTML, CSS, JavaScript",
-            "Familiarity with React or willingness to learn",
-            "Understanding of responsive design",
-            "Available for part-time commitment",
-        ],
-        icon: Code,
     },
 ];
 
@@ -164,7 +157,7 @@ export default function AboutPage() {
                     </div>
                     <ul
                         role="list"
-                        className="mx-auto grid max-w-5xl grid-cols-1 gap-x-8 gap-y-12 sm:grid-cols-2 lg:grid-cols-3 justify-items-center"
+                        className="mx-auto grid max-w-6xl grid-cols-1 gap-x-8 gap-y-12 sm:grid-cols-2 lg:grid-cols-4 justify-items-center"
                     >
                         {team.map((person) => (
                             <li key={person.name} className="text-center">
@@ -211,7 +204,7 @@ export default function AboutPage() {
                         </p>
                     </div>
 
-                    <div className="mx-auto grid max-w-5xl grid-cols-1 gap-8 lg:grid-cols-2 justify-items-center">
+                    <div className="mx-auto grid max-w-3xl grid-cols-1 gap-8 justify-items-center">
                         {careers.map((position) => (
                             <div
                                 key={position.title}
