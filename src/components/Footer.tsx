@@ -15,16 +15,16 @@ const navigation = {
         { name: "Maintenance", href: "/services" },
     ],
     social: [
-        {
-            name: "Twitter",
-            href: "https://twitter.com/psychdevs",
-            icon: Twitter,
-        },
-        {
-            name: "Instagram",
-            href: "https://instagram.com/psychdevs",
-            icon: Instagram,
-        },
+        // {
+        //     name: "Twitter",
+        //     href: "https://twitter.com/psychdevs",
+        //     icon: Twitter,
+        // },
+        // {
+        //     name: "Instagram",
+        //     href: "https://instagram.com/psychdevs",
+        //     icon: Instagram,
+        // },
         {
             name: "LinkedIn",
             href: "https://linkedin.com/company/psychdevs",

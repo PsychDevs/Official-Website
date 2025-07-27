@@ -1,6 +1,6 @@
 "use client";
 
-import * as React from "react";
+import { useState, useEffect } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { cn } from "@/lib/utils";
@@ -16,11 +16,11 @@ const navigation = [
 ];
 
 export function Navbar() {
-    const [isScrolled, setIsScrolled] = React.useState(false);
-    const [isMobileMenuOpen, setIsMobileMenuOpen] = React.useState(false);
+    const [isScrolled, setIsScrolled] = useState(false);
+    const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
     const pathname = usePathname();
 
-    React.useEffect(() => {
+    useEffect(() => {
         const handleScroll = () => {
             setIsScrolled(window.scrollY > 0);
         };
@@ -111,14 +111,6 @@ export function Navbar() {
                                     {item.name}
                                 </Link>
                             ))}
-                            <div className="pt-4 border-t">
-                                <Button
-                                    asChild
-                                    className="w-full justify-center"
-                                >
-                                    <Link href="/contact">Get Quote</Link>
-                                </Button>
-                            </div>
                         </div>
                     </div>
                 </div>
