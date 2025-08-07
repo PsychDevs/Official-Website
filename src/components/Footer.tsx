@@ -109,10 +109,10 @@ export function Footer() {
                             </p>
                             <p>
                                 <a
-                                    href="tel:+94750212605"
+                                    href="tel:+94770212604"
                                     className="hover:text-primary transition-colors"
                                 >
-                                    +94 750 212 605
+                                    +94 770 212 604
                                 </a>
                             </p>
                             <p className="text-xs">Remote-first team</p>

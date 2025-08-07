@@ -1,6 +1,6 @@
 "use client";
 import Link from "next/link";
-import { ArrowRight, Palette, Monitor, Smartphone, Zap } from "lucide-react";
+import { Palette, Monitor, Smartphone, Zap } from "lucide-react";
 import { Button } from "@/components/ui/Button";
 
 const features = [
@@ -38,14 +38,12 @@ export default function HomePage() {
                 <div className="absolute inset-0 bg-gradient-to-br from-primary/20 via-background to-background" />
                 <div className="container relative">
                     <div className="mx-auto max-w-4xl text-center">
-                        <h1 className="font-display text-4xl font-bold tracking-tight text-foreground sm:text-6xl">
-                            Professional Websites at{" "}
-                            <span className="relative whitespace-nowrap">
-                                <span className="relative bg-gradient-to-r from-primary to-primary-600 bg-clip-text text-transparent">
-                                    Affordable Prices
-                                </span>
-                            </span>
+                        <h1 className="font-display text-4xl font-bold tracking-tight text-foreground sm:text-6xl mb-2">
+                            Professional Websites at
                         </h1>
+                        <p className="font-display text-5xl font-bold tracking-tight sm:text-7xl relative bg-gradient-to-r from-primary to-primary-600 bg-clip-text text-transparent">
+                            Affordable Prices
+                        </p>
                         <p className="mt-6 text-lg leading-8 text-muted-foreground max-w-2xl mx-auto">
                             Get a stunning, professional website without the
                             premium price tag.
@@ -57,7 +55,6 @@ export default function HomePage() {
                                     className="inline-flex items-center"
                                 >
                                     Get Free Quote
-                                    <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
                                 </Link>
                             </Button>
                             <Button variant="outline" size="lg" asChild>

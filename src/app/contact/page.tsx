@@ -148,10 +148,10 @@ export default function ContactPage() {
                                     </dt>
                                     <dd>
                                         <a
-                                            href="tel:+94750212605"
+                                            href="tel:+94770212604"
                                             className="hover:text-primary"
                                         >
-                                            +94 750 212 605
+                                            +94 770 212 604
                                         </a>
                                     </dd>
                                 </div>

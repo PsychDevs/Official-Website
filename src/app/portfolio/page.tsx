@@ -1,7 +1,6 @@
 "use client";
 import { useState } from "react";
-import { Dialog } from "@headlessui/react";
-import { X, ExternalLink } from "lucide-react";
+import { ExternalLink } from "lucide-react";
 
 const projects = [
     {
@@ -80,9 +79,6 @@ const categories = [
 ];
 
 export default function PortfolioPage() {
-    const [selectedProject, setSelectedProject] = useState<
-        (typeof projects)[0] | null
-    >(null);
     const [selectedCategory, setSelectedCategory] = useState("All");
 
     const filteredProjects =
@@ -290,7 +286,6 @@ export default function PortfolioPage() {
                                 className="text-sm font-semibold leading-6 text-foreground hover:text-primary"
                             >
                                 View Our Services{" "}
-                                <span aria-hidden="true">→</span>
                             </a>
                         </div>
                     </div>
