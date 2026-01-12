@@ -44,12 +44,9 @@ export function Navbar() {
                 {/* Logo */}
                 <Link 
                     href="/" 
-                    className="flex items-center gap-2 group"
+                    className="group"
                 >
-                    <div className="w-8 h-8 rounded-lg bg-primary flex items-center justify-center font-display font-bold text-primary-foreground text-sm transition-transform group-hover:scale-105">
-                        PD
-                    </div>
-                    <span className="font-display text-lg font-bold text-foreground">
+                    <span className="font-display text-xl font-bold text-foreground transition-colors group-hover:text-primary">
                         PsychDevs
                     </span>
                 </Link>
