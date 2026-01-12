@@ -187,11 +187,11 @@ export default function ContactPage() {
                                     <div className="flex items-start gap-4">
                                         <div className="icon-container flex-shrink-0">
                                             <item.icon className="w-5 h-5" />
-                                        </div>
+                                </div>
                                         <div>
                                             <p className="text-xs text-muted-foreground mb-1">{item.label}</p>
                                             {item.href ? (
-                                                <a 
+                                        <a
                                                     href={item.href}
                                                     className="font-medium text-foreground hover:text-primary transition-colors"
                                                 >
@@ -201,7 +201,7 @@ export default function ContactPage() {
                                                 <p className="font-medium text-foreground">{item.value}</p>
                                             )}
                                             <p className="text-xs text-muted-foreground mt-1">{item.description}</p>
-                                        </div>
+                                </div>
                                     </div>
                                 </motion.div>
                             ))}
@@ -218,15 +218,15 @@ export default function ContactPage() {
                                 <div className="glass-card p-6 md:p-8">
                                     <div className="mb-6">
                                         <h2 className="text-xl font-semibold text-foreground mb-2">
-                                            Start Your Project
-                                        </h2>
+                                Start Your Project
+                            </h2>
                                         <p className="text-muted-foreground text-sm">
                                             Fill out the form below and we'll get back to you within 24 hours.
                                         </p>
                                     </div>
 
-                                    {/* Status Messages */}
-                                    {submitStatus === "success" && (
+                            {/* Status Messages */}
+                            {submitStatus === "success" && (
                                         <motion.div 
                                             initial={{ opacity: 0, y: -10 }}
                                             animate={{ opacity: 1, y: 0 }}
@@ -236,163 +236,163 @@ export default function ContactPage() {
                                             <div>
                                                 <p className="font-medium">Message sent successfully!</p>
                                                 <p className="text-sm opacity-80">We'll get back to you within 24 hours.</p>
-                                            </div>
+                                </div>
                                         </motion.div>
-                                    )}
+                            )}
 
-                                    {submitStatus === "error" && (
+                            {submitStatus === "error" && (
                                         <motion.div 
                                             initial={{ opacity: 0, y: -10 }}
                                             animate={{ opacity: 1, y: 0 }}
                                             className="p-4 rounded-xl bg-red-500/10 border border-red-500/20 text-red-400 mb-6"
                                         >
-                                            {statusMessage}
+                                    {statusMessage}
                                         </motion.div>
-                                    )}
+                            )}
 
                                     <form onSubmit={handleSubmit} className="space-y-5">
                                         <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
-                                            <div>
+                                    <div>
                                                 <label htmlFor="firstName" className="block text-sm font-medium text-foreground mb-2">
                                                     First name *
-                                                </label>
-                                                <input
-                                                    type="text"
-                                                    name="firstName"
+                                        </label>
+                                        <input
+                                            type="text"
+                                            name="firstName"
                                                     id="firstName"
-                                                    required
-                                                    value={formData.firstName}
-                                                    onChange={handleInputChange}
+                                            required
+                                            value={formData.firstName}
+                                            onChange={handleInputChange}
                                                     className="input"
                                                     placeholder="John"
-                                                />
+                                        />
                                                 <ValidationError prefix="First name" field="firstName" errors={state.errors} className="mt-1 text-sm text-red-400" />
-                                            </div>
-                                            <div>
+                                    </div>
+                                    <div>
                                                 <label htmlFor="lastName" className="block text-sm font-medium text-foreground mb-2">
-                                                    Last name
-                                                </label>
-                                                <input
-                                                    type="text"
-                                                    name="lastName"
+                                            Last name
+                                        </label>
+                                        <input
+                                            type="text"
+                                            name="lastName"
                                                     id="lastName"
-                                                    value={formData.lastName}
-                                                    onChange={handleInputChange}
+                                            value={formData.lastName}
+                                            onChange={handleInputChange}
                                                     className="input"
                                                     placeholder="Doe"
-                                                />
-                                            </div>
-                                        </div>
+                                        />
+                                    </div>
+                                </div>
 
-                                        <div>
+                                <div>
                                             <label htmlFor="email" className="block text-sm font-medium text-foreground mb-2">
                                                 Email *
-                                            </label>
-                                            <input
-                                                type="email"
-                                                name="email"
-                                                id="email"
-                                                required
-                                                value={formData.email}
-                                                onChange={handleInputChange}
+                                    </label>
+                                    <input
+                                        type="email"
+                                        name="email"
+                                        id="email"
+                                        required
+                                        value={formData.email}
+                                        onChange={handleInputChange}
                                                 className="input"
                                                 placeholder="john@example.com"
-                                            />
+                                    />
                                             <ValidationError prefix="Email" field="email" errors={state.errors} className="mt-1 text-sm text-red-400" />
-                                        </div>
+                                </div>
 
                                         <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
-                                            <div>
+                                <div>
                                                 <label htmlFor="company" className="block text-sm font-medium text-foreground mb-2">
-                                                    Company
-                                                </label>
-                                                <input
-                                                    type="text"
-                                                    name="company"
-                                                    id="company"
-                                                    value={formData.company}
-                                                    onChange={handleInputChange}
+                                        Company
+                                    </label>
+                                    <input
+                                        type="text"
+                                        name="company"
+                                        id="company"
+                                        value={formData.company}
+                                        onChange={handleInputChange}
                                                     className="input"
                                                     placeholder="Your company"
-                                                />
-                                            </div>
-                                            <div>
+                                    />
+                                </div>
+                                <div>
                                                 <label htmlFor="phone" className="block text-sm font-medium text-foreground mb-2">
                                                     Phone
-                                                </label>
-                                                <input
-                                                    type="tel"
-                                                    name="phone"
-                                                    id="phone"
-                                                    value={formData.phone}
-                                                    onChange={handleInputChange}
+                                    </label>
+                                    <input
+                                        type="tel"
+                                        name="phone"
+                                        id="phone"
+                                        value={formData.phone}
+                                        onChange={handleInputChange}
                                                     className="input"
                                                     placeholder="+1 234 567 890"
-                                                />
-                                            </div>
+                                    />
+                                </div>
                                         </div>
 
                                         <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
-                                            <div>
+                                <div>
                                                 <label htmlFor="projectType" className="block text-sm font-medium text-foreground mb-2">
-                                                    Project Type
-                                                </label>
-                                                <select
-                                                    name="projectType"
-                                                    id="projectType"
-                                                    value={formData.projectType}
-                                                    onChange={handleInputChange}
+                                        Project Type
+                                    </label>
+                                    <select
+                                        name="projectType"
+                                        id="projectType"
+                                        value={formData.projectType}
+                                        onChange={handleInputChange}
                                                     className="input"
-                                                >
+                                    >
                                                     <option value="">Select a type</option>
                                                     <option value="New Website">New Website</option>
                                                     <option value="Website Redesign">Website Redesign</option>
                                                     <option value="E-commerce Store">E-commerce Store</option>
                                                     <option value="Web Application">Web Application</option>
-                                                    <option value="Other">Other</option>
-                                                </select>
-                                            </div>
-                                            <div>
+                                        <option value="Other">Other</option>
+                                    </select>
+                                </div>
+                                <div>
                                                 <label htmlFor="budget" className="block text-sm font-medium text-foreground mb-2">
-                                                    Budget Range
-                                                </label>
-                                                <select
-                                                    name="budget"
-                                                    id="budget"
-                                                    value={formData.budget}
-                                                    onChange={handleInputChange}
+                                        Budget Range
+                                    </label>
+                                    <select
+                                        name="budget"
+                                        id="budget"
+                                        value={formData.budget}
+                                        onChange={handleInputChange}
                                                     className="input"
-                                                >
+                                    >
                                                     <option value="">Select budget</option>
                                                     <option value="$149 - $249">$149 - $249</option>
                                                     <option value="$250 - $399">$250 - $399</option>
                                                     <option value="$400 - $600">$400 - $600</option>
                                                     <option value="$600+">$600+</option>
-                                                </select>
-                                            </div>
+                                    </select>
+                                </div>
                                         </div>
 
-                                        <div>
+                                <div>
                                             <label htmlFor="message" className="block text-sm font-medium text-foreground mb-2">
                                                 Project Details *
-                                            </label>
-                                            <textarea
-                                                name="message"
-                                                id="message"
+                                    </label>
+                                    <textarea
+                                        name="message"
+                                        id="message"
                                                 rows={5}
-                                                required
-                                                value={formData.message}
-                                                onChange={handleInputChange}
-                                                placeholder="Tell us about your project, goals, and any specific requirements..."
+                                        required
+                                        value={formData.message}
+                                        onChange={handleInputChange}
+                                        placeholder="Tell us about your project, goals, and any specific requirements..."
                                                 className="input resize-none"
-                                            />
-                                        </div>
+                                    />
+                                </div>
 
-                                        <button
-                                            type="submit"
-                                            disabled={isSubmitting}
+                                <button
+                                    type="submit"
+                                    disabled={isSubmitting}
                                             className="btn btn-primary w-full h-12 text-base justify-center disabled:opacity-50 disabled:cursor-not-allowed"
-                                        >
+                                >
                                             {isSubmitting ? (
                                                 <>
                                                     <span className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin mr-2" />
@@ -409,8 +409,8 @@ export default function ContactPage() {
                                                     Send Message
                                                 </>
                                             )}
-                                        </button>
-                                    </form>
+                                </button>
+                            </form>
                                 </div>
                             </div>
 
@@ -479,10 +479,10 @@ export default function ContactPage() {
                                 >
                                     View Portfolio
                                 </Link>
-                            </div>
                         </div>
                     </div>
-                </section>
+                </div>
+            </section>
         </div>
     );
 }
