@@ -7,7 +7,6 @@ import {
     ShoppingCart,
     Zap,
     ArrowRight,
-    Sparkles,
     Shield,
     Clock,
     Headphones,
@@ -73,8 +72,7 @@ const tiers = [
     {
         name: "Basic",
         id: "tier-basic",
-        price: "$149",
-        originalPrice: "$298",
+        price: "$299",
         description: "Perfect for small businesses just getting started",
         features: [
             "3-Page Website",
@@ -89,8 +87,7 @@ const tiers = [
     {
         name: "Standard",
         id: "tier-standard",
-        price: "$249",
-        originalPrice: "$498",
+        price: "$499",
         description: "Great for growing small businesses",
         features: [
             "5-Page Custom Website",
@@ -106,8 +103,7 @@ const tiers = [
     {
         name: "Premium",
         id: "tier-premium",
-        price: "$399",
-        originalPrice: "$798",
+        price: "$799",
         description: "Best value for established businesses",
         features: [
             "10-Page Custom Website",
@@ -148,17 +144,6 @@ export default function ServicesPage() {
             <section className="pt-32 pb-20 md:pt-40 md:pb-28 relative">
                 <div className="container relative">
                     <div className="mx-auto max-w-3xl text-center">
-                        <motion.div
-                            initial={{ opacity: 0, y: 20 }}
-                            animate={{ opacity: 1, y: 0 }}
-                            transition={{ duration: 0.5 }}
-                        >
-                            <span className="badge badge-primary mb-6">
-                                <Sparkles className="w-3.5 h-3.5" />
-                                50% Off Limited Time
-                            </span>
-                        </motion.div>
-                        
                         <motion.h1 
                             initial={{ opacity: 0, y: 20 }}
                             animate={{ opacity: 1, y: 0 }}
@@ -245,10 +230,6 @@ export default function ServicesPage() {
                 <section className="section-spacing border-y border-white/5">
                     <div className="container">
                         <div className="mx-auto max-w-2xl text-center mb-16">
-                            <span className="badge badge-success mb-4">
-                                <Check className="w-3.5 h-3.5" />
-                                50% Off Until Aug 31, 2025
-                            </span>
                             <h2 className="text-3xl md:text-4xl font-display font-bold tracking-tight text-foreground">
                                 Simple,{" "}
                                 <span className="gradient-text">transparent pricing</span>
@@ -301,21 +282,6 @@ export default function ServicesPage() {
                                                     tier.featured ? "text-white/60" : "text-muted-foreground"
                                                 }`}>
                                                     /project
-                                                </span>
-                                            </div>
-
-                                            <div className="mt-2 flex items-center gap-2">
-                                                <span className={`inline-flex items-center rounded-full px-2 py-0.5 text-xs font-medium ${
-                                                    tier.featured 
-                                                        ? "bg-white/20 text-white" 
-                                                        : "bg-emerald-500/10 text-emerald-400"
-                                                }`}>
-                                                    50% OFF
-                                                </span>
-                                                <span className={`text-sm line-through ${
-                                                    tier.featured ? "text-white/40" : "text-muted-foreground/60"
-                                                }`}>
-                                                    {tier.originalPrice}
                                                 </span>
                                             </div>
 

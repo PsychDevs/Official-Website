@@ -9,7 +9,6 @@ import {
     Clock,
     Star,
     CheckCircle2,
-    Sparkles,
     Users,
     TrendingUp
 } from "lucide-react";
@@ -88,18 +87,6 @@ export default function HomePage() {
             <section className="h-screen flex items-center justify-center relative">
                 <div className="container relative z-10">
                     <div className="mx-auto max-w-4xl text-center">
-                        {/* Badge */}
-                        <motion.div 
-                            initial={{ opacity: 0, y: 20 }}
-                            animate={{ opacity: 1, y: 0 }}
-                            transition={{ duration: 0.5 }}
-                            className="inline-flex items-center gap-2 badge badge-primary mb-8"
-                        >
-                            <Sparkles className="w-3.5 h-3.5" />
-                            <span>50% Off for Small & Medium Businesses</span>
-                            <span className="text-primary/60">Until Aug 31, 2025</span>
-                        </motion.div>
-
                         {/* Headline */}
                         <motion.h1 
                             initial={{ opacity: 0, y: 20 }}
@@ -348,10 +335,6 @@ export default function HomePage() {
                 <section className="section-spacing border-y border-white/5">
                     <div className="container">
                         <div className="mx-auto max-w-2xl text-center mb-12">
-                            <span className="badge badge-success mb-4">
-                                <CheckCircle2 className="w-3.5 h-3.5" />
-                                50% Off Limited Time
-                            </span>
                             <h2 className="font-display text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight text-foreground">
                                 Transparent,{" "}
                                 <span className="gradient-text">affordable pricing</span>
@@ -364,9 +347,9 @@ export default function HomePage() {
                         <div className="mx-auto max-w-4xl">
                             <div className="grid md:grid-cols-3 gap-6">
                                 {[
-                                    { name: "Basic", price: "$149", original: "$298", features: ["3-Page Website", "Mobile-Responsive", "Contact Form", "2 Weeks Support"] },
-                                    { name: "Standard", price: "$249", original: "$498", features: ["5-Page Website", "SEO Optimization", "Social Integration", "1 Month Support"], featured: true },
-                                    { name: "Premium", price: "$399", original: "$798", features: ["10-Page Website", "E-commerce Ready", "Blog Setup", "2 Months Support"] },
+                                    { name: "Basic", price: "$299", features: ["3-Page Website", "Mobile-Responsive", "Contact Form", "2 Weeks Support"] },
+                                    { name: "Standard", price: "$499", features: ["5-Page Website", "SEO Optimization", "Social Integration", "1 Month Support"], featured: true },
+                                    { name: "Premium", price: "$799", features: ["10-Page Website", "E-commerce Ready", "Blog Setup", "2 Months Support"] },
                                 ].map((tier) => (
                                     <div 
                                         key={tier.name}
@@ -379,12 +362,9 @@ export default function HomePage() {
                                         <h3 className={`font-semibold ${tier.featured ? 'text-white' : 'text-foreground'}`}>
                                             {tier.name}
                                         </h3>
-                                        <div className="mt-4 flex items-baseline gap-2">
+                                        <div className="mt-4">
                                             <span className={`text-4xl font-display font-bold ${tier.featured ? 'text-white' : 'text-foreground'}`}>
                                                 {tier.price}
-                                            </span>
-                                            <span className={`text-sm line-through ${tier.featured ? 'text-white/60' : 'text-muted-foreground'}`}>
-                                                {tier.original}
                                             </span>
                                         </div>
                                         <ul className={`mt-6 space-y-3 text-sm ${tier.featured ? 'text-white/90' : 'text-muted-foreground'}`}>
