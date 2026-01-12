@@ -1,7 +1,7 @@
 "use client";
 import { useState } from "react";
 import Link from "next/link";
-import { ExternalLink, ArrowRight, Layers, Sparkles } from "lucide-react";
+import { ExternalLink, Layers, Sparkles } from "lucide-react";
 import { motion, AnimatePresence } from "motion/react";
 
 const projects = [
@@ -331,7 +331,6 @@ export default function PortfolioPage() {
                                             className="group btn btn-primary h-12 px-8 text-base"
                                         >
                                             Start Your Project
-                                            <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
                                         </Link>
                                         <Link
                                             href="/services"

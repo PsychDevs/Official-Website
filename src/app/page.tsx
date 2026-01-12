@@ -1,7 +1,6 @@
 "use client";
 import Link from "next/link";
 import { 
-    ArrowRight, 
     Palette, 
     Monitor, 
     Rocket, 
@@ -122,7 +121,6 @@ export default function HomePage() {
                                 className="group btn btn-primary h-12 px-8 text-base"
                             >
                                 Get Free Quote
-                                <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
                             </Link>
                             <Link
                                 href="/portfolio"
@@ -151,14 +149,6 @@ export default function HomePage() {
                                     ))}
                                 </div>
                                 <span>50+ happy clients</span>
-                            </div>
-                            <div className="flex items-center gap-2">
-                                <div className="flex gap-0.5">
-                                    {[1, 2, 3, 4, 5].map((i) => (
-                                        <Star key={i} className="w-4 h-4 fill-primary text-primary" />
-                                    ))}
-                                </div>
-                                <span>4.9/5 average rating</span>
                             </div>
                         </motion.div>
                     </div>
@@ -381,7 +371,6 @@ export default function HomePage() {
                             <div className="text-center mt-8">
                                 <Link href="/services" className="btn btn-outline h-11 px-8">
                                     View All Plans
-                                    <ArrowRight className="ml-2 h-4 w-4" />
                                 </Link>
                             </div>
                         </div>
@@ -406,7 +395,6 @@ export default function HomePage() {
                                     className="group btn btn-primary h-12 px-8 text-base"
                                 >
                                     Get Your Free Quote
-                                    <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
                                 </Link>
                                 <Link
                                     href="/portfolio"

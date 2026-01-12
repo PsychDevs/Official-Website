@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { cn } from "@/lib/utils";
-import { Menu, X, ArrowRight } from "lucide-react";
+import { Menu, X } from "lucide-react";
 
 const navigation = [
     { name: "About", href: "/about" },
@@ -79,7 +79,6 @@ export function Navbar() {
                         className="group btn btn-primary h-10 px-5 text-sm"
                     >
                         Get Quote
-                        <ArrowRight className="ml-1.5 h-3.5 w-3.5 transition-transform group-hover:translate-x-0.5" />
                     </Link>
                 </div>
 
@@ -138,7 +137,6 @@ export function Navbar() {
                             className="group btn btn-primary w-full h-12 text-base justify-center"
                         >
                             Get Free Quote
-                            <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
                         </Link>
                     </div>
                 </div>

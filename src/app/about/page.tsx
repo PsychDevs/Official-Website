@@ -7,7 +7,6 @@ import {
     Heart,
     Clock,
     DollarSign,
-    ArrowRight,
     CheckCircle2,
     Target,
     Users,
@@ -362,7 +361,6 @@ export default function AboutPage() {
                                                 className="btn btn-primary h-10 px-6 inline-flex"
                                             >
                                                 Apply Now
-                                                <ArrowRight className="ml-2 h-4 w-4" />
                                             </a>
                                         </div>
                                     ))}
@@ -405,7 +403,6 @@ export default function AboutPage() {
                                     className="group btn btn-primary h-12 px-8 text-base"
                                 >
                                     Get Free Quote
-                                    <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
                                 </Link>
                                 <Link
                                     href="/services"
