@@ -26,15 +26,48 @@ export const metadata: Metadata = {
     title: "PsychDevs | Professional Websites at Affordable Prices",
     description:
         "Get professional, high-converting websites at budget-friendly prices. We create beautiful, functional websites that help your business grow without breaking the bank.",
+    metadataBase: new URL("https://psychdevs.com"),
     icons: {
-        icon: "/PD.png",
+        icon: [
+            { url: "/PD.png", sizes: "32x32", type: "image/png" },
+            { url: "/PD.png", sizes: "16x16", type: "image/png" },
+        ],
         shortcut: "/PD.png",
-        apple: "/PD.png",
+        apple: [
+            { url: "/PD.png", sizes: "180x180", type: "image/png" },
+        ],
     },
     openGraph: {
         title: "PsychDevs | Professional Websites at Affordable Prices",
-        description: "Get professional, high-converting websites at budget-friendly prices.",
+        description: "Get professional, high-converting websites at budget-friendly prices. We create beautiful, functional websites that help your business grow.",
         type: "website",
+        siteName: "PsychDevs",
+        locale: "en_US",
+        images: [
+            {
+                url: "/PsychDevs.png",
+                width: 1200,
+                height: 630,
+                alt: "PsychDevs - Professional Websites at Affordable Prices",
+            },
+        ],
+    },
+    twitter: {
+        card: "summary_large_image",
+        title: "PsychDevs | Professional Websites at Affordable Prices",
+        description: "Get professional, high-converting websites at budget-friendly prices.",
+        images: ["/PsychDevs.png"],
+    },
+    robots: {
+        index: true,
+        follow: true,
+        googleBot: {
+            index: true,
+            follow: true,
+            "max-video-preview": -1,
+            "max-image-preview": "large",
+            "max-snippet": -1,
+        },
     },
 };
 
