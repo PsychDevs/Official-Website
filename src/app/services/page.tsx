@@ -6,7 +6,7 @@ import {
     Monitor,
     ShoppingCart,
     Zap,
-    ArrowRight,
+    Sparkles,
     Shield,
     Clock,
     Headphones,
@@ -308,7 +308,6 @@ export default function ServicesPage() {
                                             }`}
                                         >
                                             Get Started
-                                            <ArrowRight className="ml-2 h-4 w-4" />
                                         </Link>
                                     </div>
                                 ))}
@@ -324,7 +323,6 @@ export default function ServicesPage() {
                                     className="btn btn-outline h-11 px-8"
                                 >
                                     Request Custom Quote
-                                    <ArrowRight className="ml-2 h-4 w-4" />
                                 </Link>
                             </div>
                         </div>
@@ -379,7 +377,6 @@ export default function ServicesPage() {
                                     className="group btn btn-primary h-12 px-8 text-base"
                                 >
                                     Get Free Quote
-                                    <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
                                 </Link>
                                 <Link
                                     href="/portfolio"
