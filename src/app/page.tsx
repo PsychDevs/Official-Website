@@ -1,167 +1,447 @@
 "use client";
 import Link from "next/link";
-import { Palette, Monitor, Smartphone, Zap } from "lucide-react";
-import { Button } from "@/components/ui/Button";
+import { 
+    ArrowRight, 
+    Palette, 
+    Monitor, 
+    Rocket, 
+    Zap, 
+    Clock,
+    Star,
+    CheckCircle2,
+    Sparkles,
+    Users,
+    TrendingUp
+} from "lucide-react";
+import { motion } from "motion/react";
 
 const features = [
     {
-        name: "Budget-Friendly Design",
+        name: "Custom Design",
         description:
-            "Professional, custom designs that look expensive but won't break your budget.",
+            "Unique, hand-crafted designs that capture your brand's essence and set you apart from competitors.",
         icon: Palette,
     },
     {
-        name: "Mobile-Responsive",
+        name: "Mobile-First",
         description:
-            "All websites work perfectly on phones, tablets, and desktops - no extra cost.",
+            "Responsive websites that look stunning on every device, from smartphones to large displays.",
         icon: Monitor,
     },
     {
-        name: "Quick Setup",
+        name: "Fast Delivery",
         description:
-            "Get online fast with our streamlined process. Most sites launched within 1-2 weeks.",
-        icon: Smartphone,
+            "Launch your online presence quickly with our streamlined 1-2 week delivery process.",
+        icon: Rocket,
     },
     {
-        name: "Fast & Secure",
+        name: "Optimized Speed",
         description:
-            "Lightning-fast loading speeds and basic security features included in every package.",
+            "Lightning-fast loading times and performance optimization built into every project.",
         icon: Zap,
     },
 ];
 
+const stats = [
+    { value: "50+", label: "Projects Delivered" },
+    { value: "98%", label: "Client Satisfaction" },
+    { value: "1-2", label: "Weeks Turnaround" },
+    { value: "24/7", label: "Support Available" },
+];
+
+const testimonials = [
+    {
+        quote: "PsychDevs transformed our outdated website into a modern, professional platform. Our leads increased by 40% within the first month.",
+        author: "Sarah Chen",
+        role: "Founder, GreenLeaf Wellness",
+        avatar: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100&h=100&fit=crop&crop=face",
+        rating: 5,
+    },
+    {
+        quote: "Exceptional quality at an unbeatable price. They delivered exactly what we needed, on time and within budget.",
+        author: "Marcus Rodriguez",
+        role: "CEO, TechStart Solutions",
+        avatar: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=100&h=100&fit=crop&crop=face",
+        rating: 5,
+    },
+    {
+        quote: "The team's attention to detail is remarkable. Our e-commerce store looks premium and converts beautifully.",
+        author: "Emily Watson",
+        role: "Owner, Artisan Crafts",
+        avatar: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=100&h=100&fit=crop&crop=face",
+        rating: 5,
+    },
+];
+
+const trustedLogos = [
+    { name: "TechCorp", initial: "T" },
+    { name: "StartupX", initial: "S" },
+    { name: "GrowthLab", initial: "G" },
+    { name: "NextWave", initial: "N" },
+    { name: "BlueScale", initial: "B" },
+];
+
 export default function HomePage() {
     return (
-        <div className="flex flex-col min-h-screen">
+        <div className="relative">
             {/* Hero Section */}
-            <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
-                <div className="absolute inset-0 bg-gradient-to-br from-primary/20 via-background to-background" />
-                <div className="container relative">
+            <section className="h-screen flex items-center justify-center relative">
+                <div className="container relative z-10">
                     <div className="mx-auto max-w-4xl text-center">
-                        <h1 className="font-display text-4xl font-bold tracking-tight text-foreground sm:text-6xl mb-2">
-                            Professional Websites at
-                        </h1>
-                        <p className="font-display text-5xl font-bold tracking-tight sm:text-7xl relative bg-gradient-to-r from-primary to-primary-600 bg-clip-text text-transparent">
-                            Affordable Prices
-                        </p>
-                        <p className="mt-6 text-lg leading-8 text-muted-foreground max-w-2xl mx-auto">
-                            Get a stunning, professional website without the
-                            premium price tag.
-                        </p>
-                        <div className="mt-10 flex items-center justify-center gap-x-6">
-                            <Button asChild size="lg" className="group">
-                                <Link
-                                    href="/contact"
-                                    className="inline-flex items-center"
-                                >
-                                    Get Free Quote
-                                </Link>
-                            </Button>
-                            <Button variant="outline" size="lg" asChild>
-                                <Link href="/portfolio">View Our Work</Link>
-                            </Button>
-                        </div>
+                        {/* Badge */}
+                        <motion.div 
+                            initial={{ opacity: 0, y: 20 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ duration: 0.5 }}
+                            className="inline-flex items-center gap-2 badge badge-primary mb-8"
+                        >
+                            <Sparkles className="w-3.5 h-3.5" />
+                            <span>50% Off for Small & Medium Businesses</span>
+                            <span className="text-primary/60">Until Aug 31, 2025</span>
+                        </motion.div>
+
+                        {/* Headline */}
+                        <motion.h1 
+                            initial={{ opacity: 0, y: 20 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ duration: 0.5, delay: 0.1 }}
+                            className="font-display text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight text-foreground leading-[1.1]"
+                        >
+                            Professional Websites
+                            <br />
+                            <span className="gradient-text">At Affordable Prices</span>
+                        </motion.h1>
+
+                        {/* Subheadline */}
+                        <motion.p 
+                            initial={{ opacity: 0, y: 20 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ duration: 0.5, delay: 0.2 }}
+                            className="mt-6 text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto leading-relaxed"
+                        >
+                            Get a stunning, high-converting website without the enterprise price tag. 
+                            Custom designs that make your business look like a million bucks.
+                        </motion.p>
+
+                        {/* CTA Buttons */}
+                        <motion.div 
+                            initial={{ opacity: 0, y: 20 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ duration: 0.5, delay: 0.3 }}
+                            className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4"
+                        >
+                            <Link
+                                href="/contact"
+                                className="group btn btn-primary h-12 px-8 text-base"
+                            >
+                                Get Free Quote
+                                <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
+                            </Link>
+                            <Link
+                                href="/portfolio"
+                                className="btn btn-outline h-12 px-8 text-base"
+                            >
+                                View Our Work
+                            </Link>
+                        </motion.div>
+
+                        {/* Social Proof */}
+                        <motion.div 
+                            initial={{ opacity: 0, y: 20 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ duration: 0.5, delay: 0.4 }}
+                            className="mt-12 flex flex-col sm:flex-row items-center justify-center gap-6 text-sm text-muted-foreground"
+                        >
+                            <div className="flex items-center gap-2">
+                                <div className="flex -space-x-2">
+                                    {[1, 2, 3, 4].map((i) => (
+                                        <div 
+                                            key={i} 
+                                            className="w-8 h-8 rounded-full border-2 border-background bg-gradient-to-br from-primary/30 to-cyan-500/30 flex items-center justify-center"
+                                        >
+                                            <Users className="w-3.5 h-3.5 text-primary" />
+                                        </div>
+                                    ))}
+                                </div>
+                                <span>50+ happy clients</span>
+                            </div>
+                            <div className="flex items-center gap-2">
+                                <div className="flex gap-0.5">
+                                    {[1, 2, 3, 4, 5].map((i) => (
+                                        <Star key={i} className="w-4 h-4 fill-primary text-primary" />
+                                    ))}
+                                </div>
+                                <span>4.9/5 average rating</span>
+                            </div>
+                        </motion.div>
                     </div>
                 </div>
             </section>
 
-            {/* Limited Time Offer Banner */}
-            <section className="py-16 sm:py-20">
-                <div className="container">
-                    <div className="mx-auto max-w-5xl">
-                        <div className="relative rounded-xl bg-gradient-to-r from-primary/5 via-card to-primary/5 p-8 sm:p-12 text-center border border-primary/20 shadow-sm">
-                            <div className="absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
-                                <span className="inline-flex items-center rounded-full bg-primary px-3 py-1 text-sm font-semibold text-primary-foreground">
-                                    50% OFF
-                                </span>
-                            </div>
-                            <h3 className="text-2xl sm:text-3xl font-bold text-foreground mt-4 mb-4">
-                                Special Offer for Small & Medium Businesses
-                            </h3>
-                            <div className="flex flex-col sm:flex-row items-center justify-center gap-6">
-                                <span className="text-lg text-muted-foreground">
-                                    Until Aug 31, 2025
-                                </span>
-                                <Button asChild size="lg">
-                                    <Link href="/services">View Prices</Link>
-                                </Button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            {/* Features Section */}
-            <section className="py-20 sm:py-32">
-                <div className="container">
-                    <div className="mx-auto max-w-2xl text-center">
-                        <h2 className="font-display text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
-                            Everything you need for a successful website
-                        </h2>
-                        <p className="mt-4 text-lg text-muted-foreground">
-                            From design to development, we handle every aspect
-                            of your web presence with expertise and care.
+            {/* Trusted By Section */}
+                <section className="py-16 border-b border-white/5">
+                    <div className="container">
+                        <p className="text-center text-sm text-muted-foreground mb-8 uppercase tracking-wider">
+                            Trusted by growing businesses
                         </p>
-                    </div>
-                    <div className="mx-auto mt-16 max-w-5xl">
-                        <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
-                            {features.map((feature) => (
-                                <div
-                                    key={feature.name}
-                                    className="group relative rounded-2xl border bg-card p-6 shadow-sm transition-all hover:shadow-md hover:border-primary/50"
+                        <div className="flex flex-wrap justify-center items-center gap-8 md:gap-16">
+                            {trustedLogos.map((logo) => (
+                                <div 
+                                    key={logo.name}
+                                    className="flex items-center gap-2 text-muted-foreground/50 hover:text-muted-foreground transition-colors"
                                 >
-                                    <div className="mb-4 inline-flex h-12 w-12 items-center justify-center rounded-lg bg-primary/10 text-primary group-hover:bg-primary group-hover:text-white transition-colors">
-                                        <feature.icon
-                                            className="h-6 w-6"
-                                            aria-hidden="true"
-                                        />
+                                    <div className="w-10 h-10 rounded-lg bg-white/5 flex items-center justify-center font-display font-bold text-lg">
+                                        {logo.initial}
                                     </div>
-                                    <h3 className="font-display text-lg font-semibold text-foreground">
-                                        {feature.name}
-                                    </h3>
-                                    <p className="mt-2 text-sm text-muted-foreground">
-                                        {feature.description}
-                                    </p>
+                                    <span className="font-medium hidden sm:block">{logo.name}</span>
                                 </div>
                             ))}
                         </div>
                     </div>
-                </div>
-            </section>
+                </section>
 
-            {/* CTA Section */}
-            <section className="py-20 sm:py-32">
-                <div className="container">
-                    <div className="relative isolate overflow-hidden rounded-3xl bg-primary px-6 py-24 text-center shadow-2xl sm:px-16">
-                        <h2 className="mx-auto max-w-2xl font-display text-3xl font-bold tracking-tight text-white sm:text-4xl">
-                            Ready for an affordable website?
-                        </h2>
-                        <p className="mx-auto mt-6 max-w-xl text-lg leading-8 text-primary-foreground/90">
-                            Get a professional website that works for your
-                            business and your budget. No hidden fees, no
-                            surprises - just great value.
-                        </p>
-                        <div className="mt-10 flex items-center justify-center gap-x-6">
-                            <Button
-                                variant="secondary"
-                                size="lg"
-                                className="bg-white text-primary hover:bg-white/90"
-                                asChild
-                            >
-                                <Link href="/contact">Get Free Quote</Link>
-                            </Button>
-                            <Button
-                                variant="ghost"
-                                size="lg"
-                                className="text-white hover:bg-primary-600"
-                                asChild
-                            >
-                                <Link href="/portfolio">View Portfolio</Link>
-                            </Button>
+                {/* Stats Section */}
+                <section className="py-20 md:py-28">
+                    <div className="container">
+                        <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+                            {stats.map((stat) => (
+                                <div 
+                                    key={stat.label}
+                                    className="text-center"
+                                >
+                                    <div className="text-4xl md:text-5xl font-display font-bold gradient-text">
+                                        {stat.value}
+                                    </div>
+                                    <div className="mt-2 text-sm text-muted-foreground">
+                                        {stat.label}
+                                    </div>
+                                </div>
+                            ))}
                         </div>
                     </div>
-                </div>
-            </section>
+                </section>
+
+                {/* Features Section */}
+                <section className="section-spacing">
+                    <div className="container">
+                        {/* Section Header */}
+                        <div className="mx-auto max-w-2xl text-center mb-16">
+                            <span className="badge badge-primary mb-4">Why Choose Us</span>
+                            <h2 className="font-display text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight text-foreground">
+                                Everything you need for a{" "}
+                                <span className="gradient-text">successful website</span>
+                            </h2>
+                            <p className="mt-4 text-lg text-muted-foreground">
+                                From design to development, we handle every aspect of your web presence 
+                                with expertise and care.
+                            </p>
+                        </div>
+
+                        {/* Feature Cards */}
+                        <div className="mx-auto max-w-6xl">
+                            <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
+                                {features.map((feature) => (
+                                    <div
+                                        key={feature.name}
+                                        className="group glass-card hover-card p-6 transition-all duration-300"
+                                    >
+                                        <div className="icon-container mb-5">
+                                            <feature.icon className="h-5 w-5" />
+                                        </div>
+                                        <h3 className="font-display text-lg font-semibold text-foreground mb-2">
+                                            {feature.name}
+                                        </h3>
+                                        <p className="text-sm text-muted-foreground leading-relaxed">
+                                            {feature.description}
+                                        </p>
+                                    </div>
+                                ))}
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                {/* How It Works Section */}
+                <section className="section-spacing border-y border-white/5">
+                    <div className="container">
+                        <div className="mx-auto max-w-2xl text-center mb-16">
+                            <span className="badge badge-primary mb-4">Simple Process</span>
+                            <h2 className="font-display text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight text-foreground">
+                                From idea to launch in{" "}
+                                <span className="gradient-text">3 simple steps</span>
+                            </h2>
+                        </div>
+
+                        <div className="mx-auto max-w-5xl">
+                            <div className="grid md:grid-cols-3 gap-8 relative">
+                                {/* Connection lines for desktop */}
+                                <div className="hidden md:block absolute top-16 left-[20%] right-[20%] h-px bg-gradient-to-r from-primary/50 via-primary to-primary/50" />
+                                
+                                {[
+                                    { step: "01", title: "Share Your Vision", description: "Tell us about your business and what you need. We'll provide a free quote within 24 hours.", icon: Users },
+                                    { step: "02", title: "Design & Develop", description: "We create your custom website with regular updates and revisions until you're 100% satisfied.", icon: Palette },
+                                    { step: "03", title: "Launch & Grow", description: "Go live with your new website and start attracting customers. We provide ongoing support.", icon: TrendingUp },
+                                ].map((item) => (
+                                    <div key={item.step} className="relative text-center">
+                                        <div className="inline-flex items-center justify-center w-14 h-14 rounded-2xl bg-primary text-primary-foreground font-display font-bold text-lg mb-6 shadow-lg shadow-primary/25">
+                                            {item.step}
+                                        </div>
+                                        <h3 className="text-xl font-semibold text-foreground mb-2">{item.title}</h3>
+                                        <p className="text-muted-foreground">{item.description}</p>
+                                    </div>
+                                ))}
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                {/* Testimonials Section */}
+                <section className="section-spacing">
+                    <div className="container">
+                        <div className="mx-auto max-w-2xl text-center mb-16">
+                            <span className="badge badge-primary mb-4">Testimonials</span>
+                            <h2 className="font-display text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight text-foreground">
+                                Loved by businesses{" "}
+                                <span className="gradient-text">worldwide</span>
+                            </h2>
+                        </div>
+
+                        <div className="mx-auto max-w-6xl">
+                            <div className="grid gap-6 md:grid-cols-3">
+                                {testimonials.map((testimonial) => (
+                                    <div
+                                        key={testimonial.author}
+                                        className="glass-card p-6 flex flex-col"
+                                    >
+                                        {/* Rating */}
+                                        <div className="flex gap-1 mb-4">
+                                            {Array.from({ length: testimonial.rating }).map((_, i) => (
+                                                <Star key={i} className="w-4 h-4 fill-primary text-primary" />
+                                            ))}
+                                        </div>
+                                        
+                                        {/* Quote */}
+                                        <p className="text-foreground/90 leading-relaxed mb-6 flex-grow">
+                                            "{testimonial.quote}"
+                                        </p>
+                                        
+                                        {/* Author */}
+                                        <div className="flex items-center gap-3 pt-4 border-t border-white/5">
+                                            <img 
+                                                src={testimonial.avatar}
+                                                alt={testimonial.author}
+                                                className="w-10 h-10 rounded-full object-cover"
+                                            />
+                                            <div>
+                                                <div className="font-medium text-foreground">{testimonial.author}</div>
+                                                <div className="text-sm text-muted-foreground">{testimonial.role}</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                ))}
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                {/* Pricing Preview Section */}
+                <section className="section-spacing border-y border-white/5">
+                    <div className="container">
+                        <div className="mx-auto max-w-2xl text-center mb-12">
+                            <span className="badge badge-success mb-4">
+                                <CheckCircle2 className="w-3.5 h-3.5" />
+                                50% Off Limited Time
+                            </span>
+                            <h2 className="font-display text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight text-foreground">
+                                Transparent,{" "}
+                                <span className="gradient-text">affordable pricing</span>
+                            </h2>
+                            <p className="mt-4 text-lg text-muted-foreground">
+                                No hidden fees. No surprises. Just great value for your investment.
+                            </p>
+                        </div>
+
+                        <div className="mx-auto max-w-4xl">
+                            <div className="grid md:grid-cols-3 gap-6">
+                                {[
+                                    { name: "Basic", price: "$149", original: "$298", features: ["3-Page Website", "Mobile-Responsive", "Contact Form", "2 Weeks Support"] },
+                                    { name: "Standard", price: "$249", original: "$498", features: ["5-Page Website", "SEO Optimization", "Social Integration", "1 Month Support"], featured: true },
+                                    { name: "Premium", price: "$399", original: "$798", features: ["10-Page Website", "E-commerce Ready", "Blog Setup", "2 Months Support"] },
+                                ].map((tier) => (
+                                    <div 
+                                        key={tier.name}
+                                        className={`rounded-2xl p-6 ${
+                                            tier.featured 
+                                                ? 'bg-primary text-primary-foreground ring-2 ring-primary shadow-xl shadow-primary/20' 
+                                                : 'glass-card'
+                                        }`}
+                                    >
+                                        <h3 className={`font-semibold ${tier.featured ? 'text-white' : 'text-foreground'}`}>
+                                            {tier.name}
+                                        </h3>
+                                        <div className="mt-4 flex items-baseline gap-2">
+                                            <span className={`text-4xl font-display font-bold ${tier.featured ? 'text-white' : 'text-foreground'}`}>
+                                                {tier.price}
+                                            </span>
+                                            <span className={`text-sm line-through ${tier.featured ? 'text-white/60' : 'text-muted-foreground'}`}>
+                                                {tier.original}
+                                            </span>
+                                        </div>
+                                        <ul className={`mt-6 space-y-3 text-sm ${tier.featured ? 'text-white/90' : 'text-muted-foreground'}`}>
+                                            {tier.features.map((feature) => (
+                                                <li key={feature} className="flex items-center gap-2">
+                                                    <CheckCircle2 className={`w-4 h-4 ${tier.featured ? 'text-white' : 'text-primary'}`} />
+                                                    {feature}
+                                                </li>
+                                            ))}
+                                        </ul>
+                                    </div>
+                                ))}
+                            </div>
+                            <div className="text-center mt-8">
+                                <Link href="/services" className="btn btn-outline h-11 px-8">
+                                    View All Plans
+                                    <ArrowRight className="ml-2 h-4 w-4" />
+                                </Link>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                {/* Final CTA Section */}
+                <section className="section-spacing">
+                    <div className="container">
+                        <div className="mx-auto max-w-3xl text-center">
+                            <h2 className="font-display text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight text-foreground mb-6">
+                                Ready to transform your{" "}
+                                <span className="gradient-text">online presence?</span>
+                            </h2>
+                            <p className="text-lg text-muted-foreground mb-10 max-w-2xl mx-auto">
+                                Get a professional website that works for your business and your budget. 
+                                No hidden fees, no surprises – just great value.
+                            </p>
+                            <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+                                <Link
+                                    href="/contact"
+                                    className="group btn btn-primary h-12 px-8 text-base"
+                                >
+                                    Get Your Free Quote
+                                    <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
+                                </Link>
+                                <Link
+                                    href="/portfolio"
+                                    className="btn btn-outline h-12 px-8 text-base"
+                                >
+                                    View Portfolio
+                                </Link>
+                            </div>
+                            <p className="mt-6 text-sm text-muted-foreground">
+                                <Clock className="w-4 h-4 inline mr-1" />
+                                We respond within 24 hours
+                            </p>
+                        </div>
+                    </div>
+                </section>
         </div>
     );
 }

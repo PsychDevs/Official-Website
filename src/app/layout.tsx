@@ -23,13 +23,18 @@ const spaceGrotesk = Space_Grotesk({
 });
 
 export const metadata: Metadata = {
-    title: "PsychDevs",
+    title: "PsychDevs | Professional Websites at Affordable Prices",
     description:
-        "Get professional websites at budget-friendly prices. We create beautiful, functional websites that help your business grow without breaking the bank.",
+        "Get professional, high-converting websites at budget-friendly prices. We create beautiful, functional websites that help your business grow without breaking the bank.",
     icons: {
         icon: "/PD.png",
         shortcut: "/PD.png",
         apple: "/PD.png",
+    },
+    openGraph: {
+        title: "PsychDevs | Professional Websites at Affordable Prices",
+        description: "Get professional, high-converting websites at budget-friendly prices.",
+        type: "website",
     },
 };
 
@@ -39,10 +44,13 @@ export default function RootLayout({
     children: React.ReactNode;
 }) {
     return (
-        <html lang="en">
+        <html lang="en" className="scroll-smooth">
             <body
                 className={`${inter.variable} ${plusJakartaSans.variable} ${spaceGrotesk.variable} font-sans antialiased`}
             >
+                {/* Global misty lights background */}
+                <div className="global-lights-bg" />
+                
                 <div className="relative flex min-h-screen flex-col">
                     <Navbar />
                     <main className="flex-1">{children}</main>

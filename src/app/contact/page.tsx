@@ -1,8 +1,69 @@
 "use client";
 
 import { useState } from "react";
-import { Mail, Phone, MapPin, Clock } from "lucide-react";
+import Link from "next/link";
+import { 
+    Mail, 
+    Phone, 
+    MapPin, 
+    Clock, 
+    Send, 
+    MessageSquare,
+    CheckCircle2,
+    Sparkles
+} from "lucide-react";
 import { useForm, ValidationError } from "@formspree/react";
+import { motion } from "motion/react";
+
+const contactInfo = [
+    {
+        icon: Mail,
+        label: "Email",
+        value: "psychdevs@gmail.com",
+        href: "mailto:psychdevs@gmail.com",
+        description: "We respond within 24 hours",
+    },
+    {
+        icon: Phone,
+        label: "Phone",
+        value: "+94 770 212 604",
+        href: "tel:+94770212604",
+        description: "Available during business hours",
+    },
+    {
+        icon: MapPin,
+        label: "Location",
+        value: "Remote-first",
+        href: null,
+        description: "Serving clients worldwide",
+    },
+    {
+        icon: Clock,
+        label: "Response Time",
+        value: "Within 24 hours",
+        href: null,
+        description: "Guaranteed response",
+    },
+];
+
+const faqs = [
+    {
+        question: "How much does a website cost?",
+        answer: "Our websites start at just $149 for basic sites, with most projects ranging from $149 to $399 depending on features needed.",
+    },
+    {
+        question: "How long does it take?",
+        answer: "Most simple websites are completed within 1-2 weeks. More complex sites take 2-4 weeks.",
+    },
+    {
+        question: "Do you offer ongoing support?",
+        answer: "Yes! We provide maintenance, updates, and support packages for all our clients.",
+    },
+    {
+        question: "What's included in the price?",
+        answer: "All packages include custom design, mobile responsiveness, basic SEO setup, and post-launch support.",
+    },
+];
 
 export default function ContactPage() {
     const [state, handleFormspreeSubmit] = useForm("xblkogdg");
@@ -19,15 +80,11 @@ export default function ContactPage() {
     });
 
     const [isSubmitting, setIsSubmitting] = useState(false);
-    const [submitStatus, setSubmitStatus] = useState<
-        "idle" | "success" | "error"
-    >("idle");
+    const [submitStatus, setSubmitStatus] = useState<"idle" | "success" | "error">("idle");
     const [statusMessage, setStatusMessage] = useState("");
 
     const handleInputChange = (
-        e: React.ChangeEvent<
-            HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
-        >
+        e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
     ) => {
         const { name, value } = e.target;
         setFormData((prev) => ({
@@ -41,7 +98,6 @@ export default function ContactPage() {
         setSubmitStatus("idle");
 
         try {
-            // Call Formspree's handleSubmit function
             await handleFormspreeSubmit(e);
         } catch (error: any) {
             setSubmitStatus("error");
@@ -54,10 +110,8 @@ export default function ContactPage() {
         }
     };
 
-    // Handle success state with useEffect-like behavior
     if (state.succeeded && submitStatus !== "success") {
         setSubmitStatus("success");
-        // Reset form
         setFormData({
             firstName: "",
             lastName: "",
@@ -69,374 +123,366 @@ export default function ContactPage() {
             message: "",
         });
 
-        // Reset button text after 7 seconds
         setTimeout(() => {
             setSubmitStatus("idle");
         }, 7000);
     }
 
-    // Handle error state
-    if (
-        state.errors &&
-        Object.keys(state.errors).length > 0 &&
-        submitStatus !== "error"
-    ) {
+    if (state.errors && Object.keys(state.errors).length > 0 && submitStatus !== "error") {
         setSubmitStatus("error");
         setStatusMessage("Please check your form and try again.");
     }
 
     return (
-        <>
-            {/* Header Section */}
-            <section className="min-h-screen flex items-center justify-center">
-                <div className="mx-auto max-w-7xl px-6 lg:px-8">
-                    <div className="mx-auto max-w-2xl text-center">
-                        <h1 className="text-4xl font-bold tracking-tight text-foreground sm:text-6xl">
-                            Let's Build Something Amazing
-                        </h1>
-                        <p className="mt-6 text-lg leading-8 text-muted-foreground">
-                            Ready to transform your business with a stunning
-                            website? Get in touch for a free consultation and
-                            quote.
-                        </p>
+        <div className="relative">
+            {/* Hero Section */}
+            <section className="pt-32 pb-20 md:pt-40 md:pb-28 relative">
+                <div className="container relative">
+                    <div className="mx-auto max-w-3xl text-center">
+                        <motion.span
+                            initial={{ opacity: 0, y: 20 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ duration: 0.5 }}
+                            className="badge badge-primary mb-6"
+                        >
+                            <MessageSquare className="w-3.5 h-3.5" />
+                            Get in Touch
+                        </motion.span>
+                        
+                        <motion.h1 
+                            initial={{ opacity: 0, y: 20 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ duration: 0.5, delay: 0.1 }}
+                            className="text-4xl md:text-5xl lg:text-6xl font-display font-bold tracking-tight text-foreground"
+                        >
+                            Let's Build Something{" "}
+                            <span className="gradient-text">Amazing</span>
+                        </motion.h1>
+                        
+                        <motion.p 
+                            initial={{ opacity: 0, y: 20 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ duration: 0.5, delay: 0.2 }}
+                            className="mt-6 text-lg text-muted-foreground max-w-2xl mx-auto"
+                        >
+                            Ready to transform your business with a stunning website? 
+                            Get in touch for a free consultation and quote.
+                        </motion.p>
                     </div>
                 </div>
             </section>
 
-            {/* Contact Form Section */}
-            <section className="min-h-screen flex items-center justify-center">
-                <div className="mx-auto max-w-7xl px-6 lg:px-8">
-                    <div className="grid grid-cols-1 gap-x-8 gap-y-10 lg:grid-cols-2">
-                        {/* Contact Information */}
-                        <div>
-                            <h2 className="text-2xl font-bold tracking-tight text-foreground">
-                                Get in Touch
-                            </h2>
-                            <p className="mt-6 text-lg leading-8 text-muted-foreground">
-                                We'd love to discuss your project and see how we
-                                can help bring your vision to life. Here's how
-                                you can reach us:
-                            </p>
+            {/* Contact Info Cards */}
+                <section className="py-12 -mt-12 relative z-10">
+                    <div className="container">
+                        <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
+                            {contactInfo.map((item, index) => (
+                                <motion.div
+                                    key={item.label}
+                                    initial={{ opacity: 0, y: 20 }}
+                                    animate={{ opacity: 1, y: 0 }}
+                                    transition={{ duration: 0.4, delay: index * 0.1 }}
+                                    className="glass-card p-5 hover-card"
+                                >
+                                    <div className="flex items-start gap-4">
+                                        <div className="icon-container flex-shrink-0">
+                                            <item.icon className="w-5 h-5" />
+                                        </div>
+                                        <div>
+                                            <p className="text-xs text-muted-foreground mb-1">{item.label}</p>
+                                            {item.href ? (
+                                                <a 
+                                                    href={item.href}
+                                                    className="font-medium text-foreground hover:text-primary transition-colors"
+                                                >
+                                                    {item.value}
+                                                </a>
+                                            ) : (
+                                                <p className="font-medium text-foreground">{item.value}</p>
+                                            )}
+                                            <p className="text-xs text-muted-foreground mt-1">{item.description}</p>
+                                        </div>
+                                    </div>
+                                </motion.div>
+                            ))}
+                        </div>
+                    </div>
+                </section>
 
-                            <dl className="mt-10 space-y-4 text-base leading-7 text-muted-foreground">
-                                <div className="flex gap-x-4">
-                                    <dt className="flex-none">
-                                        <span className="sr-only">Email</span>
-                                        <Mail
-                                            className="h-6 w-6 text-primary"
-                                            aria-hidden="true"
-                                        />
-                                    </dt>
-                                    <dd>
+                {/* Contact Form Section */}
+                <section className="section-spacing">
+                    <div className="container">
+                        <div className="grid lg:grid-cols-5 gap-12 lg:gap-16">
+                            {/* Form */}
+                            <div className="lg:col-span-3">
+                                <div className="glass-card p-6 md:p-8">
+                                    <div className="mb-6">
+                                        <h2 className="text-xl font-semibold text-foreground mb-2">
+                                            Start Your Project
+                                        </h2>
+                                        <p className="text-muted-foreground text-sm">
+                                            Fill out the form below and we'll get back to you within 24 hours.
+                                        </p>
+                                    </div>
+
+                                    {/* Status Messages */}
+                                    {submitStatus === "success" && (
+                                        <motion.div 
+                                            initial={{ opacity: 0, y: -10 }}
+                                            animate={{ opacity: 1, y: 0 }}
+                                            className="p-4 rounded-xl bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 mb-6 flex items-start gap-3"
+                                        >
+                                            <CheckCircle2 className="w-5 h-5 flex-shrink-0 mt-0.5" />
+                                            <div>
+                                                <p className="font-medium">Message sent successfully!</p>
+                                                <p className="text-sm opacity-80">We'll get back to you within 24 hours.</p>
+                                            </div>
+                                        </motion.div>
+                                    )}
+
+                                    {submitStatus === "error" && (
+                                        <motion.div 
+                                            initial={{ opacity: 0, y: -10 }}
+                                            animate={{ opacity: 1, y: 0 }}
+                                            className="p-4 rounded-xl bg-red-500/10 border border-red-500/20 text-red-400 mb-6"
+                                        >
+                                            {statusMessage}
+                                        </motion.div>
+                                    )}
+
+                                    <form onSubmit={handleSubmit} className="space-y-5">
+                                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                                            <div>
+                                                <label htmlFor="firstName" className="block text-sm font-medium text-foreground mb-2">
+                                                    First name *
+                                                </label>
+                                                <input
+                                                    type="text"
+                                                    name="firstName"
+                                                    id="firstName"
+                                                    required
+                                                    value={formData.firstName}
+                                                    onChange={handleInputChange}
+                                                    className="input"
+                                                    placeholder="John"
+                                                />
+                                                <ValidationError prefix="First name" field="firstName" errors={state.errors} className="mt-1 text-sm text-red-400" />
+                                            </div>
+                                            <div>
+                                                <label htmlFor="lastName" className="block text-sm font-medium text-foreground mb-2">
+                                                    Last name
+                                                </label>
+                                                <input
+                                                    type="text"
+                                                    name="lastName"
+                                                    id="lastName"
+                                                    value={formData.lastName}
+                                                    onChange={handleInputChange}
+                                                    className="input"
+                                                    placeholder="Doe"
+                                                />
+                                            </div>
+                                        </div>
+
+                                        <div>
+                                            <label htmlFor="email" className="block text-sm font-medium text-foreground mb-2">
+                                                Email *
+                                            </label>
+                                            <input
+                                                type="email"
+                                                name="email"
+                                                id="email"
+                                                required
+                                                value={formData.email}
+                                                onChange={handleInputChange}
+                                                className="input"
+                                                placeholder="john@example.com"
+                                            />
+                                            <ValidationError prefix="Email" field="email" errors={state.errors} className="mt-1 text-sm text-red-400" />
+                                        </div>
+
+                                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                                            <div>
+                                                <label htmlFor="company" className="block text-sm font-medium text-foreground mb-2">
+                                                    Company
+                                                </label>
+                                                <input
+                                                    type="text"
+                                                    name="company"
+                                                    id="company"
+                                                    value={formData.company}
+                                                    onChange={handleInputChange}
+                                                    className="input"
+                                                    placeholder="Your company"
+                                                />
+                                            </div>
+                                            <div>
+                                                <label htmlFor="phone" className="block text-sm font-medium text-foreground mb-2">
+                                                    Phone
+                                                </label>
+                                                <input
+                                                    type="tel"
+                                                    name="phone"
+                                                    id="phone"
+                                                    value={formData.phone}
+                                                    onChange={handleInputChange}
+                                                    className="input"
+                                                    placeholder="+1 234 567 890"
+                                                />
+                                            </div>
+                                        </div>
+
+                                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                                            <div>
+                                                <label htmlFor="projectType" className="block text-sm font-medium text-foreground mb-2">
+                                                    Project Type
+                                                </label>
+                                                <select
+                                                    name="projectType"
+                                                    id="projectType"
+                                                    value={formData.projectType}
+                                                    onChange={handleInputChange}
+                                                    className="input"
+                                                >
+                                                    <option value="">Select a type</option>
+                                                    <option value="New Website">New Website</option>
+                                                    <option value="Website Redesign">Website Redesign</option>
+                                                    <option value="E-commerce Store">E-commerce Store</option>
+                                                    <option value="Web Application">Web Application</option>
+                                                    <option value="Other">Other</option>
+                                                </select>
+                                            </div>
+                                            <div>
+                                                <label htmlFor="budget" className="block text-sm font-medium text-foreground mb-2">
+                                                    Budget Range
+                                                </label>
+                                                <select
+                                                    name="budget"
+                                                    id="budget"
+                                                    value={formData.budget}
+                                                    onChange={handleInputChange}
+                                                    className="input"
+                                                >
+                                                    <option value="">Select budget</option>
+                                                    <option value="$149 - $249">$149 - $249</option>
+                                                    <option value="$250 - $399">$250 - $399</option>
+                                                    <option value="$400 - $600">$400 - $600</option>
+                                                    <option value="$600+">$600+</option>
+                                                </select>
+                                            </div>
+                                        </div>
+
+                                        <div>
+                                            <label htmlFor="message" className="block text-sm font-medium text-foreground mb-2">
+                                                Project Details *
+                                            </label>
+                                            <textarea
+                                                name="message"
+                                                id="message"
+                                                rows={5}
+                                                required
+                                                value={formData.message}
+                                                onChange={handleInputChange}
+                                                placeholder="Tell us about your project, goals, and any specific requirements..."
+                                                className="input resize-none"
+                                            />
+                                        </div>
+
+                                        <button
+                                            type="submit"
+                                            disabled={isSubmitting}
+                                            className="btn btn-primary w-full h-12 text-base justify-center disabled:opacity-50 disabled:cursor-not-allowed"
+                                        >
+                                            {isSubmitting ? (
+                                                <>
+                                                    <span className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin mr-2" />
+                                                    Sending...
+                                                </>
+                                            ) : submitStatus === "success" ? (
+                                                <>
+                                                    <CheckCircle2 className="w-4 h-4 mr-2" />
+                                                    Sent Successfully
+                                                </>
+                                            ) : (
+                                                <>
+                                                    <Send className="w-4 h-4 mr-2" />
+                                                    Send Message
+                                                </>
+                                            )}
+                                        </button>
+                                    </form>
+                                </div>
+                            </div>
+
+                            {/* FAQ Sidebar */}
+                            <div className="lg:col-span-2">
+                                <div className="sticky top-24">
+                                    <h3 className="text-lg font-semibold text-foreground mb-6 flex items-center gap-2">
+                                        <Sparkles className="w-4 h-4 text-primary" />
+                                        Frequently Asked Questions
+                                    </h3>
+                                    <div className="space-y-4">
+                                        {faqs.map((faq) => (
+                                            <div 
+                                                key={faq.question}
+                                                className="glass-card p-5"
+                                            >
+                                                <h4 className="font-medium text-foreground mb-2">
+                                                    {faq.question}
+                                                </h4>
+                                                <p className="text-sm text-muted-foreground">
+                                                    {faq.answer}
+                                                </p>
+                                            </div>
+                                        ))}
+                                    </div>
+
+                                    {/* Direct Contact CTA */}
+                                    <div className="mt-8 glass-card p-6 text-center">
+                                        <p className="text-muted-foreground mb-4">
+                                            Prefer to talk directly?
+                                        </p>
                                         <a
                                             href="mailto:psychdevs@gmail.com"
-                                            className="hover:text-primary"
+                                            className="btn btn-outline h-10 px-6 inline-flex"
                                         >
-                                            psychdevs@gmail.com
+                                            <Mail className="w-4 h-4 mr-2" />
+                                            Email Us Directly
                                         </a>
-                                    </dd>
-                                </div>
-                                <div className="flex gap-x-4">
-                                    <dt className="flex-none">
-                                        <span className="sr-only">
-                                            Telephone
-                                        </span>
-                                        <Phone
-                                            className="h-6 w-6 text-primary"
-                                            aria-hidden="true"
-                                        />
-                                    </dt>
-                                    <dd>
-                                        <a
-                                            href="tel:+94770212604"
-                                            className="hover:text-primary"
-                                        >
-                                            +94 770 212 604
-                                        </a>
-                                    </dd>
-                                </div>
-                                <div className="flex gap-x-4">
-                                    <dt className="flex-none">
-                                        <span className="sr-only">
-                                            Location
-                                        </span>
-                                        <MapPin
-                                            className="h-6 w-6 text-primary"
-                                            aria-hidden="true"
-                                        />
-                                    </dt>
-                                    <dd>
-                                        Remote-first team serving clients
-                                        worldwide
-                                    </dd>
-                                </div>
-                                <div className="flex gap-x-4">
-                                    <dt className="flex-none">
-                                        <span className="sr-only">
-                                            Response time
-                                        </span>
-                                        <Clock
-                                            className="h-6 w-6 text-primary"
-                                            aria-hidden="true"
-                                        />
-                                    </dt>
-                                    <dd>We respond within 24 hours</dd>
-                                </div>
-                            </dl>
-
-                            {/* FAQ Section */}
-                            <div className="mt-10">
-                                <h3 className="text-lg font-semibold text-foreground">
-                                    Quick Questions
-                                </h3>
-                                <dl className="mt-4 space-y-4 text-sm">
-                                    <div>
-                                        <dt className="font-medium text-foreground">
-                                            How much does a website cost?
-                                        </dt>
-                                        <dd className="mt-1 text-muted-foreground">
-                                            Our websites start at just $149 for
-                                            basic sites, with most projects
-                                            ranging from $149 to $399 depending
-                                            on features needed.
-                                        </dd>
                                     </div>
-                                    <div>
-                                        <dt className="font-medium text-foreground">
-                                            How long does it take?
-                                        </dt>
-                                        <dd className="mt-1 text-muted-foreground">
-                                            Most simple websites are completed
-                                            within 1-2 weeks. More complex sites
-                                            take 2-4 weeks.
-                                        </dd>
-                                    </div>
-                                    <div>
-                                        <dt className="font-medium text-foreground">
-                                            Do you offer ongoing support?
-                                        </dt>
-                                        <dd className="mt-1 text-muted-foreground">
-                                            Yes! We provide maintenance,
-                                            updates, and support packages for
-                                            all our clients.
-                                        </dd>
-                                    </div>
-                                </dl>
+                                </div>
                             </div>
                         </div>
+                    </div>
+                </section>
 
-                        {/* Contact Form */}
-                        <div className="bg-card p-8 rounded-2xl border shadow-sm">
-                            <h2 className="text-xl font-semibold text-foreground mb-6">
-                                Start Your Project
+                {/* CTA Section */}
+                <section className="section-spacing border-t border-white/5">
+                    <div className="container">
+                        <div className="mx-auto max-w-3xl text-center">
+                            <h2 className="text-2xl md:text-3xl font-display font-bold tracking-tight text-foreground mb-4">
+                                Not sure what you need?
                             </h2>
-
-                            {/* Status Messages */}
-                            {submitStatus === "success" && (
-                                <div className="p-4 rounded-md bg-green-50 text-green-800 border border-green-200 mb-6">
-                                    Thank you! Your message has been sent
-                                    successfully. We'll get back to you within
-                                    24 hours.
-                                </div>
-                            )}
-
-                            {submitStatus === "error" && (
-                                <div className="p-4 rounded-md bg-red-50 text-red-800 border border-red-200 mb-6">
-                                    {statusMessage}
-                                </div>
-                            )}
-
-                            <form className="space-y-6" onSubmit={handleSubmit}>
-                                {/* TODO: Add Formspree action URL here when ready */}
-                                {/* Example: <form action="https://formspree.io/f/YOUR_FORM_ID" method="POST" className="space-y-6" onSubmit={handleSubmit}> */}
-                                <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
-                                    <div>
-                                        <label
-                                            htmlFor="first-name"
-                                            className="block text-sm font-medium text-foreground"
-                                        >
-                                            First name
-                                        </label>
-                                        <input
-                                            type="text"
-                                            name="firstName"
-                                            id="first-name"
-                                            autoComplete="given-name"
-                                            required
-                                            value={formData.firstName}
-                                            onChange={handleInputChange}
-                                            className="mt-2 block w-full rounded-md border border-input bg-background px-3 py-2 text-foreground shadow-sm focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary"
-                                        />
-                                        <ValidationError
-                                            prefix="First name"
-                                            field="firstName"
-                                            errors={state.errors}
-                                            className="mt-1 text-sm text-red-600"
-                                        />
-                                    </div>
-                                    <div>
-                                        <label
-                                            htmlFor="last-name"
-                                            className="block text-sm font-medium text-foreground"
-                                        >
-                                            Last name
-                                        </label>
-                                        <input
-                                            type="text"
-                                            name="lastName"
-                                            id="last-name"
-                                            autoComplete="family-name"
-                                            value={formData.lastName}
-                                            onChange={handleInputChange}
-                                            className="mt-2 block w-full rounded-md border border-input bg-background px-3 py-2 text-foreground shadow-sm focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary"
-                                        />
-                                    </div>
-                                </div>
-                                <div>
-                                    <label
-                                        htmlFor="email"
-                                        className="block text-sm font-medium text-foreground"
-                                    >
-                                        Email
-                                    </label>
-                                    <input
-                                        type="email"
-                                        name="email"
-                                        id="email"
-                                        autoComplete="email"
-                                        required
-                                        value={formData.email}
-                                        onChange={handleInputChange}
-                                        className="mt-2 block w-full rounded-md border border-input bg-background px-3 py-2 text-foreground shadow-sm focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary"
-                                    />
-                                    <ValidationError
-                                        prefix="Email"
-                                        field="email"
-                                        errors={state.errors}
-                                        className="mt-1 text-sm text-red-600"
-                                    />
-                                </div>
-                                <div>
-                                    <label
-                                        htmlFor="company"
-                                        className="block text-sm font-medium text-foreground"
-                                    >
-                                        Company
-                                    </label>
-                                    <input
-                                        type="text"
-                                        name="company"
-                                        id="company"
-                                        autoComplete="organization"
-                                        value={formData.company}
-                                        onChange={handleInputChange}
-                                        className="mt-2 block w-full rounded-md border border-input bg-background px-3 py-2 text-foreground shadow-sm focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary"
-                                    />
-                                </div>
-                                <div>
-                                    <label
-                                        htmlFor="phone"
-                                        className="block text-sm font-medium text-foreground"
-                                    >
-                                        Phone Number (Optional)
-                                    </label>
-                                    <input
-                                        type="tel"
-                                        name="phone"
-                                        id="phone"
-                                        autoComplete="tel"
-                                        value={formData.phone}
-                                        onChange={handleInputChange}
-                                        className="mt-2 block w-full rounded-md border border-input bg-background px-3 py-2 text-foreground shadow-sm focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary"
-                                    />
-                                </div>
-                                <div>
-                                    <label
-                                        htmlFor="projectType"
-                                        className="block text-sm font-medium text-foreground"
-                                    >
-                                        Project Type
-                                    </label>
-                                    <select
-                                        name="projectType"
-                                        id="projectType"
-                                        value={formData.projectType}
-                                        onChange={handleInputChange}
-                                        className="mt-2 block w-full rounded-md border border-input bg-background px-3 py-2 text-foreground shadow-sm focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary"
-                                    >
-                                        <option value="">
-                                            Select a project type
-                                        </option>
-                                        <option value="New Website">
-                                            New Website
-                                        </option>
-                                        <option value="Website Redesign">
-                                            Website Redesign
-                                        </option>
-                                        <option value="E-commerce Store">
-                                            E-commerce Store
-                                        </option>
-                                        <option value="Web Application">
-                                            Web Application
-                                        </option>
-                                        <option value="Other">Other</option>
-                                    </select>
-                                </div>
-                                <div>
-                                    <label
-                                        htmlFor="budget"
-                                        className="block text-sm font-medium text-foreground"
-                                    >
-                                        Budget Range
-                                    </label>
-                                    <select
-                                        name="budget"
-                                        id="budget"
-                                        value={formData.budget}
-                                        onChange={handleInputChange}
-                                        className="mt-2 block w-full rounded-md border border-input bg-background px-3 py-2 text-foreground shadow-sm focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary"
-                                    >
-                                        <option>Select your budget</option>
-                                        <option>$149 - $249</option>
-                                        <option>$250 - $399</option>
-                                        <option>$400 - $600</option>
-                                        <option>$600+</option>
-                                    </select>
-                                </div>
-                                <div>
-                                    <label
-                                        htmlFor="message"
-                                        className="block text-sm font-medium text-foreground"
-                                    >
-                                        Project Details
-                                    </label>
-                                    <textarea
-                                        name="message"
-                                        id="message"
-                                        rows={4}
-                                        required
-                                        value={formData.message}
-                                        onChange={handleInputChange}
-                                        placeholder="Tell us about your project, goals, and any specific requirements..."
-                                        className="mt-2 block w-full rounded-md border border-input bg-background px-3 py-2 text-foreground shadow-sm focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary resize-none"
-                                    />
-                                </div>
-                                <button
-                                    type="submit"
-                                    disabled={isSubmitting}
-                                    className="w-full rounded-md bg-primary px-4 py-3 text-white font-semibold hover:bg-primary/90 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 transition disabled:opacity-50 disabled:cursor-not-allowed"
+                            <p className="text-muted-foreground mb-8">
+                                Check out our services or portfolio to get inspired.
+                            </p>
+                            <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+                                <Link
+                                    href="/services"
+                                    className="btn btn-outline h-11 px-8"
                                 >
-                                    {isSubmitting
-                                        ? "Sending..."
-                                        : submitStatus === "success"
-                                        ? "Email sent"
-                                        : "Send Project Inquiry"}
-                                </button>
-                            </form>
+                                    View Services
+                                </Link>
+                                <Link
+                                    href="/portfolio"
+                                    className="btn btn-outline h-11 px-8"
+                                >
+                                    View Portfolio
+                                </Link>
+                            </div>
                         </div>
                     </div>
-                </div>
-            </section>
-        </>
+                </section>
+        </div>
     );
 }

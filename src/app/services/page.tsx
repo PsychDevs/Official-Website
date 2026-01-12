@@ -1,14 +1,18 @@
+"use client";
+import Link from "next/link";
 import {
     Check,
-    Layout,
-    Code,
-    Zap,
-    Cpu,
     Palette,
     Monitor,
     ShoppingCart,
+    Zap,
+    ArrowRight,
+    Sparkles,
+    Shield,
+    Clock,
+    Headphones,
 } from "lucide-react";
-import { Button } from "@/components/ui/Button";
+import { motion } from "motion/react";
 
 const services = [
     {
@@ -16,52 +20,52 @@ const services = [
         description:
             "Unique, brand-focused website designs that capture your brand essence and convert visitors into customers.",
         icon: Palette,
-        image: "/services/webdesign.jpg",
         features: [
             "Custom UI/UX Design",
             "Brand Integration",
             "Mobile-First Approach",
             "Conversion Optimization",
         ],
+        image: "https://images.unsplash.com/photo-1561070791-2526d30994b5?w=600&h=400&fit=crop",
     },
     {
         title: "E-commerce Development",
         description:
             "Complete online stores with payment integration, inventory management, and customer analytics.",
         icon: ShoppingCart,
-        image: "/services/ecommerce.jpg",
         features: [
             "Payment Integration",
             "Inventory Management",
             "Customer Analytics",
             "Mobile Commerce",
         ],
+        image: "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=600&h=400&fit=crop",
     },
     {
         title: "Responsive Development",
         description:
             "Fast, modern websites built with the latest technologies and optimized for all devices.",
         icon: Monitor,
-        image: "/services/development.jpg",
         features: [
             "Modern Frameworks",
             "SEO Optimization",
             "Performance Tuning",
             "Cross-browser Support",
         ],
+        image: "https://images.unsplash.com/photo-1547658719-da2b51169166?w=600&h=400&fit=crop",
     },
     {
         title: "Website Maintenance",
         description:
             "Ongoing support, updates, and optimization to keep your website running smoothly.",
         icon: Zap,
-        image: "/services/maintenance.jpg",
         features: [
             "Regular Updates",
             "Security Monitoring",
             "Backup Services",
             "Performance Optimization",
         ],
+        image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&h=400&fit=crop",
     },
 ];
 
@@ -69,7 +73,8 @@ const tiers = [
     {
         name: "Basic",
         id: "tier-basic",
-        price: { monthly: "$149" },
+        price: "$149",
+        originalPrice: "$298",
         description: "Perfect for small businesses just getting started",
         features: [
             "3-Page Website",
@@ -84,7 +89,8 @@ const tiers = [
     {
         name: "Standard",
         id: "tier-standard",
-        price: { monthly: "$249" },
+        price: "$249",
+        originalPrice: "$498",
         description: "Great for growing small businesses",
         features: [
             "5-Page Custom Website",
@@ -100,7 +106,8 @@ const tiers = [
     {
         name: "Premium",
         id: "tier-premium",
-        price: { monthly: "$399" },
+        price: "$399",
+        originalPrice: "$798",
         description: "Best value for established businesses",
         features: [
             "10-Page Custom Website",
@@ -116,217 +123,308 @@ const tiers = [
     },
 ];
 
+const guarantees = [
+    {
+        icon: Shield,
+        title: "Money-Back Guarantee",
+        description: "Not satisfied? Get a full refund within 14 days.",
+    },
+    {
+        icon: Clock,
+        title: "On-Time Delivery",
+        description: "Your project delivered on schedule, guaranteed.",
+    },
+    {
+        icon: Headphones,
+        title: "Ongoing Support",
+        description: "Free support included with every package.",
+    },
+];
+
 export default function ServicesPage() {
     return (
-        <div className="flex flex-col">
-            {/* Header Section - Fullscreen */}
-            <section className="min-h-screen flex items-center justify-center">
-                <div className="mx-auto max-w-7xl px-6 lg:px-8">
-                    <div className="mx-auto max-w-2xl text-center">
-                        <h1 className="text-4xl font-bold tracking-tight text-foreground sm:text-6xl">
+        <div className="relative">
+            {/* Hero Section */}
+            <section className="pt-32 pb-20 md:pt-40 md:pb-28 relative">
+                <div className="container relative">
+                    <div className="mx-auto max-w-3xl text-center">
+                        <motion.div
+                            initial={{ opacity: 0, y: 20 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ duration: 0.5 }}
+                        >
+                            <span className="badge badge-primary mb-6">
+                                <Sparkles className="w-3.5 h-3.5" />
+                                50% Off Limited Time
+                            </span>
+                        </motion.div>
+                        
+                        <motion.h1 
+                            initial={{ opacity: 0, y: 20 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ duration: 0.5, delay: 0.1 }}
+                            className="text-4xl md:text-5xl lg:text-6xl font-display font-bold tracking-tight text-foreground"
+                        >
                             Affordable Web Services
-                        </h1>
-                        <p className="mt-6 text-lg leading-8 text-muted-foreground">
-                            Professional web design and development services at
-                            prices that small businesses can actually afford
-                        </p>
-                    </div>
-
-                    {/* Limited Time Offer Banner */}
-                    <div className="mx-auto mt-12 max-w-3xl">
-                        <div className="relative rounded-xl bg-gradient-to-r from-primary/10 via-primary/5 to-primary/10 p-6 text-center border border-primary/20">
-                            <div className="absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
-                                <span className="inline-flex items-center rounded-full bg-primary px-3 py-1 text-sm font-semibold text-primary-foreground">
-                                    50% OFF
-                                </span>
-                            </div>
-                            <h3 className="text-xl font-bold text-foreground mt-2 mb-2">
-                                Special Offer for Small & Medium Businesses
-                            </h3>
-                            <p className="text-base text-muted-foreground">
-                                Valid until August 31, 2025
-                            </p>
-                        </div>
+                            <br />
+                            <span className="gradient-text">Premium Results</span>
+                        </motion.h1>
+                        
+                        <motion.p 
+                            initial={{ opacity: 0, y: 20 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ duration: 0.5, delay: 0.2 }}
+                            className="mt-6 text-lg text-muted-foreground max-w-2xl mx-auto"
+                        >
+                            Professional web design and development services at prices 
+                            that small businesses can actually afford. No compromises on quality.
+                        </motion.p>
                     </div>
                 </div>
             </section>
 
-            <div className="py-24 sm:py-32">
-                <div className="mx-auto max-w-7xl px-6 lg:px-8">
-                    {/* Services Grid */}
-                    <div className="mx-auto mt-16 max-w-2xl sm:mt-20 lg:mt-24 lg:max-w-none">
-                        <dl className="grid max-w-xl grid-cols-1 gap-x-8 gap-y-16 lg:max-w-none lg:grid-cols-2">
+            {/* Services Grid */}
+                <section className="section-spacing">
+                    <div className="container">
+                        <div className="mx-auto max-w-2xl text-center mb-16">
+                            <span className="badge badge-primary mb-4">Our Services</span>
+                            <h2 className="text-3xl md:text-4xl font-display font-bold tracking-tight text-foreground">
+                                Everything you need to{" "}
+                                <span className="gradient-text">succeed online</span>
+                            </h2>
+                        </div>
+
+                        <div className="grid gap-8 lg:grid-cols-2">
                             {services.map((service) => (
                                 <div
                                     key={service.title}
-                                    className="flex flex-col"
+                                    className="group glass-card hover-card overflow-hidden"
                                 >
-                                    <div className="relative mb-8 h-64 overflow-hidden rounded-2xl bg-gray-50">
-                                        <div className="absolute inset-0 bg-gradient-to-br from-primary/20 to-primary/5" />
-                                        <div className="absolute inset-0 flex items-center justify-center">
-                                            <service.icon className="h-20 w-20 text-primary" />
+                                    {/* Image */}
+                                    <div className="relative h-48 overflow-hidden">
+                                        <img 
+                                            src={service.image}
+                                            alt={service.title}
+                                            className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                                        />
+                                        <div className="absolute inset-0 bg-gradient-to-t from-background via-background/50 to-transparent" />
+                                        <div className="absolute bottom-4 left-4">
+                                            <div className="icon-container">
+                                                <service.icon className="h-5 w-5" />
+                                            </div>
                                         </div>
                                     </div>
-                                    <dt className="text-base font-semibold leading-7 text-foreground">
-                                        <div className="mb-6 flex h-10 w-10 items-center justify-center rounded-lg bg-primary">
-                                            <service.icon
-                                                className="h-6 w-6 text-white"
-                                                aria-hidden="true"
-                                            />
-                                        </div>
-                                        {service.title}
-                                    </dt>
-                                    <dd className="mt-1 flex flex-auto flex-col text-base leading-7 text-muted-foreground">
-                                        <p className="flex-auto">
+                                    
+                                    {/* Content */}
+                                    <div className="p-6">
+                                        <h3 className="text-xl font-semibold text-foreground mb-2">
+                                            {service.title}
+                                        </h3>
+                                        <p className="text-muted-foreground mb-4">
                                             {service.description}
                                         </p>
-                                        <ul className="mt-4 space-y-2">
+                                        <ul className="grid grid-cols-2 gap-2">
                                             {service.features.map((feature) => (
-                                                <li
+                                                <li 
                                                     key={feature}
-                                                    className="flex items-center text-sm"
+                                                    className="flex items-center gap-2 text-sm text-muted-foreground"
                                                 >
-                                                    <Check className="mr-2 h-4 w-4 text-primary" />
+                                                    <Check className="w-4 h-4 text-primary flex-shrink-0" />
                                                     {feature}
                                                 </li>
                                             ))}
                                         </ul>
-                                    </dd>
+                                    </div>
                                 </div>
                             ))}
-                        </dl>
-                    </div>
-
-                    {/* Pricing Section */}
-                    <div className="mx-auto mt-16 max-w-2xl rounded-3xl ring-1 ring-gray-200 sm:mt-20 lg:mx-0 lg:flex lg:max-w-none">
-                        <div className="p-8 sm:p-10 lg:flex-auto">
-                            <h3 className="text-2xl font-bold tracking-tight text-foreground">
-                                Our Pricing Plans
-                            </h3>
-                            <p className="mt-6 text-base leading-7 text-muted-foreground">
-                                Choose the perfect plan for your business needs.
-                                All plans include modern design, mobile
-                                optimization, and ongoing support.
-                            </p>
                         </div>
                     </div>
+                </section>
 
-                    <div className="isolate mx-auto mt-10 grid max-w-md grid-cols-1 gap-8 lg:mx-0 lg:max-w-none lg:grid-cols-3">
-                        {tiers.map((tier) => (
-                            <div
-                                key={tier.id}
-                                className={`rounded-3xl p-8 ring-1 flex flex-col ${
-                                    tier.featured
-                                        ? "bg-primary ring-primary"
-                                        : "ring-gray-200"
-                                }`}
-                            >
-                                <div className="flex-grow">
-                                    <h3
-                                        className={`text-lg font-semibold leading-8 ${
+                {/* Pricing Section */}
+                <section className="section-spacing border-y border-white/5">
+                    <div className="container">
+                        <div className="mx-auto max-w-2xl text-center mb-16">
+                            <span className="badge badge-success mb-4">
+                                <Check className="w-3.5 h-3.5" />
+                                50% Off Until Aug 31, 2025
+                            </span>
+                            <h2 className="text-3xl md:text-4xl font-display font-bold tracking-tight text-foreground">
+                                Simple,{" "}
+                                <span className="gradient-text">transparent pricing</span>
+                            </h2>
+                            <p className="mt-4 text-lg text-muted-foreground">
+                                Choose the perfect plan for your business. No hidden fees, no surprises.
+                            </p>
+                        </div>
+
+                        <div className="mx-auto max-w-5xl">
+                            <div className="grid gap-6 lg:grid-cols-3">
+                                {tiers.map((tier) => (
+                                    <div
+                                        key={tier.id}
+                                        className={`relative rounded-2xl p-8 flex flex-col ${
                                             tier.featured
-                                                ? "text-white"
-                                                : "text-foreground"
+                                                ? "bg-primary ring-2 ring-primary shadow-xl shadow-primary/20"
+                                                : "glass-card"
                                         }`}
                                     >
-                                        {tier.name}
-                                    </h3>
-                                    <p
-                                        className={`mt-4 text-sm leading-6 ${
-                                            tier.featured
-                                                ? "text-primary-foreground/80"
-                                                : "text-muted-foreground"
-                                        }`}
-                                    >
-                                        {tier.description}
-                                    </p>
-                                    <p className="mt-6 flex items-baseline gap-x-1">
-                                        <span
-                                            className={`text-4xl font-bold tracking-tight ${
+                                        {tier.featured && (
+                                            <div className="absolute -top-3 left-1/2 -translate-x-1/2">
+                                                <span className="inline-flex items-center gap-1 px-3 py-1 rounded-full bg-white text-primary text-xs font-semibold">
+                                                    <Sparkles className="w-3 h-3" />
+                                                    Most Popular
+                                                </span>
+                                            </div>
+                                        )}
+
+                                        <div className="flex-grow">
+                                            <h3 className={`text-lg font-semibold ${
+                                                tier.featured ? "text-white" : "text-foreground"
+                                            }`}>
+                                                {tier.name}
+                                            </h3>
+                                            
+                                            <p className={`mt-2 text-sm ${
+                                                tier.featured ? "text-white/70" : "text-muted-foreground"
+                                            }`}>
+                                                {tier.description}
+                                            </p>
+
+                                            <div className="mt-6 flex items-baseline gap-2">
+                                                <span className={`text-4xl font-display font-bold ${
+                                                    tier.featured ? "text-white" : "text-foreground"
+                                                }`}>
+                                                    {tier.price}
+                                                </span>
+                                                <span className={`text-sm ${
+                                                    tier.featured ? "text-white/60" : "text-muted-foreground"
+                                                }`}>
+                                                    /project
+                                                </span>
+                                            </div>
+
+                                            <div className="mt-2 flex items-center gap-2">
+                                                <span className={`inline-flex items-center rounded-full px-2 py-0.5 text-xs font-medium ${
+                                                    tier.featured 
+                                                        ? "bg-white/20 text-white" 
+                                                        : "bg-emerald-500/10 text-emerald-400"
+                                                }`}>
+                                                    50% OFF
+                                                </span>
+                                                <span className={`text-sm line-through ${
+                                                    tier.featured ? "text-white/40" : "text-muted-foreground/60"
+                                                }`}>
+                                                    {tier.originalPrice}
+                                                </span>
+                                            </div>
+
+                                            <ul className={`mt-8 space-y-3 text-sm ${
+                                                tier.featured ? "text-white/90" : "text-muted-foreground"
+                                            }`}>
+                                                {tier.features.map((feature) => (
+                                                    <li key={feature} className="flex items-start gap-3">
+                                                        <Check className={`w-5 h-5 flex-shrink-0 ${
+                                                            tier.featured ? "text-white" : "text-primary"
+                                                        }`} />
+                                                        {feature}
+                                                    </li>
+                                                ))}
+                                            </ul>
+                                        </div>
+
+                                        <Link
+                                            href="/contact"
+                                            className={`mt-8 btn h-11 justify-center ${
                                                 tier.featured
-                                                    ? "text-white"
-                                                    : "text-foreground"
+                                                    ? "bg-white text-primary hover:bg-white/90 shadow-lg"
+                                                    : "btn-primary"
                                             }`}
                                         >
-                                            {tier.price.monthly}
-                                        </span>
-                                        {tier.price.monthly !== "Custom" && (
-                                            <span
-                                                className={`text-sm font-semibold leading-6 ${
-                                                    tier.featured
-                                                        ? "text-primary-foreground/80"
-                                                        : "text-muted-foreground"
-                                                }`}
-                                            >
-                                                /project
-                                            </span>
-                                        )}
-                                    </p>
-                                    {tier.price.monthly !== "Custom" && (
-                                        <div className="mt-2 flex items-center gap-2">
-                                            <span className="inline-flex items-center rounded-md bg-green-50 px-2 py-1 text-xs font-medium text-green-700 ring-1 ring-inset ring-green-600/20">
-                                                50% OFF
-                                            </span>
-                                            <span
-                                                className={`text-sm line-through ${
-                                                    tier.featured
-                                                        ? "text-primary-foreground/60"
-                                                        : "text-muted-foreground"
-                                                }`}
-                                            >
-                                                {tier.name === "Basic"
-                                                    ? "$298"
-                                                    : tier.name === "Standard"
-                                                    ? "$498"
-                                                    : "$798"}
-                                            </span>
-                                        </div>
-                                    )}
-                                    <ul
-                                        role="list"
-                                        className={`mt-8 space-y-3 text-sm leading-6 ${
-                                            tier.featured
-                                                ? "text-primary-foreground/90"
-                                                : "text-muted-foreground"
-                                        }`}
-                                    >
-                                        {tier.features.map((feature) => (
-                                            <li
-                                                key={feature}
-                                                className="flex gap-x-3"
-                                            >
-                                                <Check
-                                                    className={`h-6 w-5 flex-none ${
-                                                        tier.featured
-                                                            ? "text-white"
-                                                            : "text-primary"
-                                                    }`}
-                                                    aria-hidden="true"
-                                                />
-                                                {feature}
-                                            </li>
-                                        ))}
-                                    </ul>
-                                </div>
-                                <Button
-                                    className={`mt-8 w-full ${
-                                        tier.featured
-                                            ? "bg-white text-primary hover:bg-gray-50"
-                                            : "bg-primary text-white hover:bg-primary/90"
-                                    }`}
-                                    asChild
-                                >
-                                    <a href="/contact">
-                                        {tier.price.monthly === "Custom"
-                                            ? "Contact Us"
-                                            : "Get Started"}
-                                    </a>
-                                </Button>
+                                            Get Started
+                                            <ArrowRight className="ml-2 h-4 w-4" />
+                                        </Link>
+                                    </div>
+                                ))}
                             </div>
-                        ))}
+
+                            {/* Custom Quote CTA */}
+                            <div className="mt-12 text-center">
+                                <p className="text-muted-foreground mb-4">
+                                    Need something custom? We've got you covered.
+                                </p>
+                                <Link 
+                                    href="/contact"
+                                    className="btn btn-outline h-11 px-8"
+                                >
+                                    Request Custom Quote
+                                    <ArrowRight className="ml-2 h-4 w-4" />
+                                </Link>
+                            </div>
+                        </div>
                     </div>
-                </div>
-            </div>
+                </section>
+
+                {/* Guarantees Section */}
+                <section className="section-spacing">
+                    <div className="container">
+                        <div className="mx-auto max-w-4xl">
+                            <div className="text-center mb-12">
+                                <h2 className="text-2xl md:text-3xl font-display font-bold tracking-tight text-foreground">
+                                    Our Guarantees
+                                </h2>
+                            </div>
+
+                            <div className="grid gap-6 md:grid-cols-3">
+                                {guarantees.map((item) => (
+                                    <div 
+                                        key={item.title}
+                                        className="text-center p-6 glass-card"
+                                    >
+                                        <div className="icon-container mx-auto mb-4">
+                                            <item.icon className="h-5 w-5" />
+                                        </div>
+                                        <h3 className="font-semibold text-foreground mb-2">
+                                            {item.title}
+                                        </h3>
+                                        <p className="text-sm text-muted-foreground">
+                                            {item.description}
+                                        </p>
+                                    </div>
+                                ))}
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                {/* CTA Section */}
+                <section className="section-spacing border-t border-white/5">
+                    <div className="container">
+                        <div className="mx-auto max-w-3xl text-center">
+                            <h2 className="text-3xl md:text-4xl font-display font-bold tracking-tight text-foreground mb-6">
+                                Ready to get started?
+                            </h2>
+                            <p className="text-lg text-muted-foreground mb-10">
+                                Let's discuss your project and find the perfect solution for your business.
+                            </p>
+                            <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+                                <Link
+                                    href="/contact"
+                                    className="group btn btn-primary h-12 px-8 text-base"
+                                >
+                                    Get Free Quote
+                                    <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
+                                </Link>
+                                <Link
+                                    href="/portfolio"
+                                    className="btn btn-outline h-12 px-8 text-base"
+                                >
+                                    View Our Work
+                                </Link>
+                            </div>
+                        </div>
+                    </div>
+                </section>
         </div>
     );
 }

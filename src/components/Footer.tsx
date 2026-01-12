@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { Github, Twitter, Linkedin, Instagram } from "lucide-react";
+import { Github, Linkedin, Mail, Phone, MapPin, ArrowUpRight } from "lucide-react";
 
 const navigation = {
     main: [
@@ -14,17 +14,11 @@ const navigation = {
         { name: "Web Development", href: "/services" },
         { name: "Maintenance", href: "/services" },
     ],
+    legal: [
+        { name: "Privacy Policy", href: "/privacy" },
+        { name: "Terms of Service", href: "/terms" },
+    ],
     social: [
-        // {
-        //     name: "Twitter",
-        //     href: "https://twitter.com/psychdevs",
-        //     icon: Twitter,
-        // },
-        // {
-        //     name: "Instagram",
-        //     href: "https://instagram.com/psychdevs",
-        //     icon: Instagram,
-        // },
         {
             name: "LinkedIn",
             href: "https://linkedin.com/company/psychdevs",
@@ -40,106 +34,152 @@ const navigation = {
 
 export function Footer() {
     return (
-        <footer className="border-t bg-muted/30 mt-16 md:mt-24">
-            <div className="container py-12 md:py-16">
-                <div className="grid gap-8 md:grid-cols-4">
-                    {/* Brand Section */}
-                    <div className="space-y-4 md:col-span-2">
-                        <Link href="/" className="flex items-center space-x-2">
-                            <span className="font-display text-xl font-bold">
-                                PsychDevs
-                            </span>
-                        </Link>
-                        <p className="text-sm text-muted-foreground max-w-md">
-                            We create affordable, professional websites that
-                            help small businesses succeed online. Quality web
-                            design at prices that won't break your budget.
-                        </p>
-                        <div className="flex space-x-4 mt-6">
-                            {navigation.social.map((item) => (
-                                <Link
-                                    key={item.name}
-                                    href={item.href}
-                                    className="text-muted-foreground hover:text-primary transition-colors"
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                >
-                                    <span className="sr-only">{item.name}</span>
-                                    <item.icon
-                                        className="h-5 w-5"
-                                        aria-hidden="true"
-                                    />
-                                </Link>
-                            ))}
-                        </div>
-                    </div>
-
-                    {/* Services */}
-                    <div className="space-y-4">
-                        <h3 className="text-sm font-semibold text-foreground">
-                            Services
-                        </h3>
-                        <ul className="space-y-2">
-                            {navigation.services.map((item) => (
-                                <li key={item.name}>
-                                    <Link
-                                        href={item.href}
-                                        className="text-sm text-muted-foreground hover:text-primary transition-colors"
-                                    >
-                                        {item.name}
-                                    </Link>
-                                </li>
-                            ))}
-                        </ul>
-                    </div>
-
-                    {/* Contact */}
-                    <div className="space-y-4">
-                        <h3 className="text-sm font-semibold text-foreground">
-                            Get in Touch
-                        </h3>
-                        <div className="space-y-2 text-sm text-muted-foreground">
-                            <p>
-                                <a
+        <footer className="relative border-t border-white/5 bg-background">
+            {/* Gradient overlay */}
+            <div className="absolute inset-0 bg-gradient-to-t from-primary/5 via-transparent to-transparent pointer-events-none" />
+            
+            <div className="container relative">
+                {/* Main Footer Content */}
+                <div className="py-16 md:py-20">
+                    <div className="grid gap-12 lg:grid-cols-12">
+                        {/* Brand Section */}
+                        <div className="lg:col-span-5 space-y-6">
+                            <Link href="/" className="inline-flex items-center gap-2 group">
+                                <div className="w-8 h-8 rounded-lg bg-primary flex items-center justify-center font-display font-bold text-primary-foreground text-sm transition-transform group-hover:scale-105">
+                                    PD
+                                </div>
+                                <span className="font-display text-xl font-bold text-foreground">
+                                    PsychDevs
+                                </span>
+                            </Link>
+                            <p className="text-muted-foreground max-w-sm leading-relaxed">
+                                We create affordable, professional websites that help 
+                                businesses succeed online. Quality web design at prices 
+                                that won't break your budget.
+                            </p>
+                            
+                            {/* Contact Info */}
+                            <div className="space-y-3">
+                                <a 
                                     href="mailto:psychdevs@gmail.com"
-                                    className="hover:text-primary transition-colors"
+                                    className="flex items-center gap-3 text-sm text-muted-foreground hover:text-primary transition-colors group"
                                 >
+                                    <div className="flex items-center justify-center w-8 h-8 rounded-lg bg-white/5 group-hover:bg-primary/10 transition-colors">
+                                        <Mail className="w-4 h-4" />
+                                    </div>
                                     psychdevs@gmail.com
                                 </a>
-                            </p>
-                            <p>
-                                <a
+                                <a 
                                     href="tel:+94770212604"
-                                    className="hover:text-primary transition-colors"
+                                    className="flex items-center gap-3 text-sm text-muted-foreground hover:text-primary transition-colors group"
                                 >
+                                    <div className="flex items-center justify-center w-8 h-8 rounded-lg bg-white/5 group-hover:bg-primary/10 transition-colors">
+                                        <Phone className="w-4 h-4" />
+                                    </div>
                                     +94 770 212 604
                                 </a>
-                            </p>
-                            <p className="text-xs">Remote-first team</p>
-                            <p className="text-xs">Serving clients worldwide</p>
+                                <div className="flex items-center gap-3 text-sm text-muted-foreground">
+                                    <div className="flex items-center justify-center w-8 h-8 rounded-lg bg-white/5">
+                                        <MapPin className="w-4 h-4" />
+                                    </div>
+                                    Remote-first · Worldwide
+                                </div>
+                            </div>
+
+                            {/* Social Links */}
+                            <div className="flex gap-2 pt-2">
+                                {navigation.social.map((item) => (
+                                    <a
+                                        key={item.name}
+                                        href={item.href}
+                                        className="flex items-center justify-center w-10 h-10 rounded-lg bg-white/5 text-muted-foreground hover:bg-primary/10 hover:text-primary transition-all"
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        aria-label={item.name}
+                                    >
+                                        <item.icon className="h-4 w-4" />
+                                    </a>
+                                ))}
+                            </div>
+                        </div>
+
+                        {/* Navigation Links */}
+                        <div className="lg:col-span-7">
+                            <div className="grid grid-cols-2 md:grid-cols-3 gap-8">
+                                {/* Company */}
+                                <div>
+                                    <h3 className="text-sm font-semibold text-foreground mb-4">
+                                        Company
+                                    </h3>
+                                    <ul className="space-y-3">
+                                        {navigation.main.map((item) => (
+                                            <li key={item.name}>
+                                                <Link
+                                                    href={item.href}
+                                                    className="text-sm text-muted-foreground hover:text-primary transition-colors inline-flex items-center gap-1 group"
+                                                >
+                                                    {item.name}
+                                                    <ArrowUpRight className="w-3 h-3 opacity-0 -translate-y-0.5 translate-x-0.5 group-hover:opacity-100 transition-all" />
+                                                </Link>
+                                            </li>
+                                        ))}
+                                    </ul>
+                                </div>
+
+                                {/* Services */}
+                                <div>
+                                    <h3 className="text-sm font-semibold text-foreground mb-4">
+                                        Services
+                                    </h3>
+                                    <ul className="space-y-3">
+                                        {navigation.services.map((item) => (
+                                            <li key={item.name}>
+                                                <Link
+                                                    href={item.href}
+                                                    className="text-sm text-muted-foreground hover:text-primary transition-colors inline-flex items-center gap-1 group"
+                                                >
+                                                    {item.name}
+                                                    <ArrowUpRight className="w-3 h-3 opacity-0 -translate-y-0.5 translate-x-0.5 group-hover:opacity-100 transition-all" />
+                                                </Link>
+                                            </li>
+                                        ))}
+                                    </ul>
+                                </div>
+
+                                {/* Legal */}
+                                <div>
+                                    <h3 className="text-sm font-semibold text-foreground mb-4">
+                                        Legal
+                                    </h3>
+                                    <ul className="space-y-3">
+                                        {navigation.legal.map((item) => (
+                                            <li key={item.name}>
+                                                <Link
+                                                    href={item.href}
+                                                    className="text-sm text-muted-foreground hover:text-primary transition-colors inline-flex items-center gap-1 group"
+                                                >
+                                                    {item.name}
+                                                    <ArrowUpRight className="w-3 h-3 opacity-0 -translate-y-0.5 translate-x-0.5 group-hover:opacity-100 transition-all" />
+                                                </Link>
+                                            </li>
+                                        ))}
+                                    </ul>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
 
                 {/* Bottom Bar */}
-                <div className="mt-12 border-t pt-8 flex flex-col md:flex-row justify-between items-center">
+                <div className="py-6 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-4">
                     <p className="text-sm text-muted-foreground">
-                        © {new Date().getFullYear()} PsychDevs. All rights
-                        reserved.
+                        © {new Date().getFullYear()} PsychDevs. All rights reserved.
                     </p>
-                    <div className="mt-4 md:mt-0 flex space-x-6">
-                        <Link
-                            href="/privacy"
-                            className="text-sm text-muted-foreground hover:text-primary transition-colors"
-                        >
-                            Privacy Policy
-                        </Link>
-                        <Link
-                            href="/terms"
-                            className="text-sm text-muted-foreground hover:text-primary transition-colors"
-                        >
-                            Terms of Service
-                        </Link>
+                    <div className="flex items-center gap-2 text-sm text-muted-foreground">
+                        <span className="flex items-center gap-1.5">
+                            <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
+                            All systems operational
+                        </span>
                     </div>
                 </div>
             </div>
